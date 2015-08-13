@@ -162,7 +162,7 @@
     self.emptyLeaf.position = [UniversalUtil universaliPadPoint:value.CGPointValue
                                                     iPhonePoint:CGPOINT_NON
                                                         offsetX:0
-                                                        offsetY:0];
+                                                        offsetY:-30];
     self.emptyLeaf.zPosition = zPostionCharacter;
     [self.riverLayer1 addChild:self.emptyLeaf];
     
