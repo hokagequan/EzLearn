@@ -153,7 +153,7 @@
     self.frog.position = [UniversalUtil universaliPadPoint:[self adjustFrogPositionWith:value.CGPointValue]
                                                iPhonePoint:CGPOINT_NON
                                                    offsetX:-20
-                                                   offsetY:0];
+                                                   offsetY:-30];
     self.frog.zPosition = zPostionCharacter + 10;
     self.frog.allJumpPositions = [NSMutableArray arrayWithArray:self.leafPositions];
     [self.riverLayer1 addChild:self.frog];
@@ -285,13 +285,13 @@
     self.frog.position = [UniversalUtil universaliPadPoint:CGPointMake(-80, startPosition.y)
                                                iPhonePoint:CGPointMake(-40, startPosition.y)
                                                    offsetX:0
-                                                   offsetY:0];
+                                                   offsetY:-30];
     [riverLayer addChild:self.frog];
     
     [self.frog runAction:[SKAction moveTo:[UniversalUtil universaliPadPoint:[self adjustFrogPositionWith:startPosition]
                                                                 iPhonePoint:CGPOINT_NON
                                                                     offsetX:-20
-                                                                    offsetY:0]
+                                                                    offsetY:-30]
                                  duration:0.3]];
 }
 
@@ -350,6 +350,11 @@
     }
     
     NSMutableArray *questionLeafs = self.questionLeafs[riverIndex];
+    
+    for (HSLabelSprite *leaf in questionLeafs) {
+        leaf.hidden = YES;
+    }
+    
     NSUInteger j = 0;
     for (int i = 0; i < question.titles.count + 1; i++) {
         NSValue *value = self.leafPositions[i];
@@ -358,7 +363,7 @@
             theLeaf.position = [UniversalUtil universaliPadPoint:value.CGPointValue
                                                      iPhonePoint:CGPOINT_NON
                                                          offsetX:-20
-                                                         offsetY:0];
+                                                         offsetY:-30];
             self.fitLocation = theLeaf.position;
             
             continue;
@@ -369,8 +374,9 @@
         leaf.position = [UniversalUtil universaliPadPoint:value.CGPointValue
                                               iPhonePoint:CGPOINT_NON
                                                   offsetX:-20
-                                                  offsetY:0];
+                                                  offsetY:-30];
         leaf.label.text = character;
+        leaf.hidden = NO;
         j++;
     }
     

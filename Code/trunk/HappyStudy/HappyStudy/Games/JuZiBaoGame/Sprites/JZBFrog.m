@@ -81,7 +81,7 @@
             CGPoint targetPosition = [UniversalUtil universaliPadPoint:value.CGPointValue
                                                            iPhonePoint:CGPOINT_NON
                                                                offsetX:-20
-                                                               offsetY:0];
+                                                               offsetY:-30];
             targetPosition = CGPointMake(targetPosition.x, targetPosition.y + self.size.height / 2 + [UniversalUtil universalDelta:20]);
             
             SKAction *moveAction = [SKAction followPath:[self frogJumpPathFrom:self.position to:targetPosition]

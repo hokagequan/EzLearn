@@ -115,7 +115,7 @@
             JZBModel *model = self.models[self.gameScene.curIndex];
             AVSpeechSynthesizer *synth = [GlobalUtil speakText:[model combineSentence]];
             synth.delegate = self;
-            [self.gameScene setFrogJumpTarget:3];
+            [self.gameScene setFrogJumpTarget:model.question.titles.count];
         }
         else {
             [self.gameScene setFrogJumpTarget:self.questionIndex];
