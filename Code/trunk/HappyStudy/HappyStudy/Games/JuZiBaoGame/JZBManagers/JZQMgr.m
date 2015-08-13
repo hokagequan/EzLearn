@@ -50,7 +50,7 @@
     NSInteger index = array.count - 1;
     for (int i = 0; i < array.count; i++) {
         NSDictionary *dict = array[index];
-        NSDictionary *group = dict[@"Questions"];
+        NSDictionary *group = dict[@"Question"];
         JZQModel *model = [[JZQModel alloc] init];
         model.modelID = dict[@"QuestionID"];
         model.indexStr = [NSString stringWithFormat:@"%@", @(pos + 1 - i)];
@@ -60,7 +60,7 @@
         
         for (int j = 0; j < words.count; j++) {
             JZQWord *word = [[JZQWord alloc] init];
-            word.word = words[j];
+            word.word = words[j][@"word"];
             
             [model.words addObject:word];
         }
@@ -129,7 +129,7 @@
         
     [HttpReqMgr requestGetGameData:[AccountMgr sharedInstance].user.name
                             gameID:StudyGameJuZiQiao
-                              from:-1
+                              from:0
                              count:1000
                         completion:^(NSDictionary *info) {
                             [self appendDataWithInfo:info];

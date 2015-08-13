@@ -78,6 +78,12 @@
     [self gameBegain];
 }
 
+- (void)willMoveFromView:(nonnull SKView *)view {
+    [self removeAllActions];
+    
+    [super willMoveFromView:view];
+}
+
 - (void)addControllers {
     HSButtonSprite *leftNode = [[HSButtonSprite alloc] initWithTitle:nil
                                                             norImage:@"pre_page_nor"
