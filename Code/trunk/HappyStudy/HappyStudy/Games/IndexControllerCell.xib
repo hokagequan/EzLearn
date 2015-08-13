@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="FZHPJW.TTF">
+            <string>FZHPJW--GB1-0</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IndexControllerCell" id="gTV-IL-0wX" customClass="IndexControllerCell">
+            <rect key="frame" x="0.0" y="0.0" width="130" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="130" height="80"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqw-Vt-rDm">
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="80"/>
+                        <fontDescription key="fontDescription" name="FZHPJW--GB1-0" family="FZHuPo-M04S" pointSize="60"/>
+                        <color key="textColor" red="1" green="0.94117647058823528" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="oqw-Vt-rDm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="S5V-4r-dHt"/>
+                <constraint firstItem="oqw-Vt-rDm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WW7-BV-kHS"/>
+                <constraint firstAttribute="bottom" secondItem="oqw-Vt-rDm" secondAttribute="bottom" id="nvK-wd-5g3"/>
+                <constraint firstAttribute="trailing" secondItem="oqw-Vt-rDm" secondAttribute="trailing" id="yPi-K2-QrM"/>
+            </constraints>
+            <size key="customSize" width="130" height="80"/>
+            <connections>
+                <outlet property="titleLab" destination="oqw-Vt-rDm" id="AMn-cN-U5m"/>
+            </connections>
+            <point key="canvasLocation" x="291" y="218"/>
+        </collectionViewCell>
+    </objects>
+</document>

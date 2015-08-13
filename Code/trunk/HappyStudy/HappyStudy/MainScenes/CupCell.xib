@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="FZHPJW.TTF">
+            <string>FZHPJW--GB1-0</string>
+            <string>FZHPJW--GB1-0</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CupCell" id="KGk-i7-Jjw" customClass="CupCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HQt-CR-KUh" userLabel="Icon">
+                        <rect key="frame" x="5" y="16" width="55" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="55" id="HyC-2d-IPt"/>
+                            <constraint firstAttribute="height" constant="55" id="o5y-CV-hCc"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=";alksdjf;alskdfa;lksdfja;lskdjfas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9l-Xe-ISu" userLabel="Title">
+                        <rect key="frame" x="72" y="26" width="130" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="3un-Fu-e0U"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="FZHPJW--GB1-0" family="FZHuPo-M04S" pointSize="15"/>
+                        <color key="textColor" red="0.95686274509803926" green="0.45882352941176469" blue="0.062745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZO-2K-MDh">
+                        <rect key="frame" x="212" y="23" width="100" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="PUT-IJ-QJs"/>
+                            <constraint firstAttribute="height" constant="40" id="VXn-oH-dQK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="FZHPJW--GB1-0" family="FZHuPo-M04S" pointSize="18"/>
+                        <state key="normal" title="点击兑换" backgroundImage="cup_btn.png">
+                            <color key="titleColor" red="0.74509803921568629" green="0.41176470588235292" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="clickExchange:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ahe-BT-oqS"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKF-OE-Vzs" userLabel="Border">
+                        <rect key="frame" x="0.0" y="83" width="320" height="4"/>
+                        <color key="backgroundColor" red="0.92156862750000001" green="0.80392156859999997" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="4" id="Gir-V3-uZi"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="t9l-Xe-ISu" firstAttribute="leading" secondItem="HQt-CR-KUh" secondAttribute="trailing" constant="12" id="0Qw-Wy-NRm"/>
+                    <constraint firstAttribute="centerY" secondItem="t9l-Xe-ISu" secondAttribute="centerY" id="49i-Fx-HN0"/>
+                    <constraint firstAttribute="bottom" secondItem="kKF-OE-Vzs" secondAttribute="bottom" id="6v1-aw-OLL"/>
+                    <constraint firstAttribute="trailing" secondItem="KZO-2K-MDh" secondAttribute="trailing" constant="8" id="7Rw-j8-nuI"/>
+                    <constraint firstAttribute="centerY" secondItem="HQt-CR-KUh" secondAttribute="centerY" id="Err-lP-ftD"/>
+                    <constraint firstItem="KZO-2K-MDh" firstAttribute="leading" secondItem="t9l-Xe-ISu" secondAttribute="trailing" constant="10" id="Gnt-3x-gzr"/>
+                    <constraint firstItem="HQt-CR-KUh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="OQE-BF-8U0"/>
+                    <constraint firstAttribute="trailing" secondItem="kKF-OE-Vzs" secondAttribute="trailing" id="VpB-O0-3LA"/>
+                    <constraint firstItem="kKF-OE-Vzs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lra-2c-YuU"/>
+                    <constraint firstAttribute="centerY" secondItem="KZO-2K-MDh" secondAttribute="centerY" id="r5D-vu-MrM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="border" destination="kKF-OE-Vzs" id="bu6-ak-bz6"/>
+                <outlet property="exchangeBtn" destination="KZO-2K-MDh" id="cAw-yl-XzT"/>
+                <outlet property="icon" destination="HQt-CR-KUh" id="MxT-GR-dhf"/>
+                <outlet property="titleLab" destination="t9l-Xe-ISu" id="7K6-Dz-Dgi"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cup_btn.png" width="100" height="40"/>
+    </resources>
+</document>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>VersionSelectionInfo</key>
+	<dict>
+		<key>FontSize</key>
+		<integer>46</integer>
+	</dict>
+	<key>CompanyName</key>
+	<string>EzLearn  Island</string>
+	<key>About</key>
+	<string>We Computer Science Ph.Ds and Chinese Study Maters graduated from NUS have been working very hard to design and develop Ez-Learn App for teachers and children. Ez-Learn Features:
+· Children Learning Becomes Playing IPad Games
+· Teacher Designing Game by Mouse Click
+· Individualized and Interactive Education from Cloud
+Contact Us
+E-mail: info@kudospark.com
+www.kudospark.com  Copy Right 2014@KudoSpark Pte. Ltd. </string>
+</dict>
+</plist>

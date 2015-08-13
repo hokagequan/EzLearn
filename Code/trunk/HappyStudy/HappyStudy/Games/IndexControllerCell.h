@@ -1,0 +1,15 @@
+//
+//  IndexControllerCell.h
+//  HappyStudy
+//
+//  Created by Q on 14-10-16.
+//  Copyright (c) 2014年 LittleIsland. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface IndexControllerCell : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
+
+@end
