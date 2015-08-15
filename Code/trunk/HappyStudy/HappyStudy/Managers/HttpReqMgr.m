@@ -275,7 +275,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"StudentID"] = userName;
     params[@"HeartNumber"] = [NSString stringWithFormat:@"%@", @(score)];
-    params[@"TotalTime"] = [NSString stringWithFormat:@"%@", @(playtime / 60)];
+    params[@"TotalTime"] = [NSString stringWithFormat:@"%.2f", playtime / 60];
     [[HttpReqMgr sharedInstance] requestWithMethod:@"ind_getappshareinfo"
                                             params:params
                                         completion:^(NSDictionary *info) {
