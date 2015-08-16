@@ -21,7 +21,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    // TODO: 微信注册
     [WXApi registerApp:WEIXIN_APP_KEY];
     
     return YES;
