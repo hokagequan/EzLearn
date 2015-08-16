@@ -26,7 +26,8 @@
 
 @property (strong, nonatomic) ShareNode *shareNode;
 @property (strong, nonatomic) CupScene *cupScene;
-@property (strong, nonatomic) HSLabelSprite *cupNotify;
+@property (strong, nonatomic) SKShapeNode *cupNotify;
+@property (strong, nonatomic) SKLabelNode *cupNotifyNumberLabel;
 
 @property (strong, nonatomic) Task *toShareTask;
 @property (strong, nonatomic) NSArray *lockedGames;
@@ -62,11 +63,10 @@
 }
 
 - (void)refreshCupInfo {
-    self.cupNotify.alpha = ([AccountMgr sharedInstance].awards.count > 0 || [AccountMgr sharedInstance].tasks.count > 0) ? 1.0 : 0.0;
-    
-    if (self.cupScene && [self.cupScene isShowing]) {
-        [self refreshCupInfo];
-    }
+    NSInteger count = [AccountMgr sharedInstance].awards.count + [AccountMgr sharedInstance].tasks.count;
+    self.cupNotify.alpha = count > 0 ? 1.0 : 0.0;
+//    self.cupNotify.label.text = [NSString stringWithFormat:@"%@", @(count)];
+    self.cupNotifyNumberLabel.text = [NSString stringWithFormat:@"%@", @(count)];
 }
 
 - (void)showCup {
@@ -241,13 +241,30 @@
     [self addNode:cupNode atWorldLayer:GSWorldLayerTop];
     [self.buttons addObject:cupNode];
     
-    self.cupNotify = [[HSLabelSprite alloc] initWithTexture:nil title:0];
+//    self.cupNotify = [[HSLabelSprite alloc] initWithTexture:nil title:0];
+//    self.cupNotify.zPosition = 10;
+//    self.cupNotify.size = [UniversalUtil universaliPadSize:CGSizeMake(30, 30) iPhoneSize:CGSIZE_NON];
+//    self.cupNotify.position = CGPointMake(cupNode.position.x + cupNode.size.width / 2 - self.cupNotify.size.width / 2,
+//                                          cupNode.position.y + cupNode.size.height / 2 - self.cupNotify.size.height / 2);
+//    self.cupNotify.alpha = 0.0;
+//    self.cupNotify.color = [UIColor redColor];
+//    self.cupNotify.label.fontSize = [UniversalUtil universalFontSize:30];
+//    [self addNode:self.cupNotify atWorldLayer:GSWorldLayerTop];
+    CGFloat radius = [UniversalUtil universalDelta:20];
+    self.cupNotify = [SKShapeNode shapeNodeWithCircleOfRadius:radius];
+    self.cupNotify.fillColor = [UIColor redColor];
     self.cupNotify.zPosition = 10;
-    self.cupNotify.position = CGPointMake(cupNode.position.x + cupNode.size.width / 2,
-                                          cupNode.position.y + cupNode.size.height / 2);
+    self.cupNotify.position = CGPointMake(cupNode.position.x + cupNode.size.width / 2 - radius / 2,
+                                          cupNode.position.y + cupNode.size.height / 2 - radius / 2);
     self.cupNotify.alpha = 0.0;
-    self.cupNotify.color = [UIColor redColor];
     [self addNode:self.cupNotify atWorldLayer:GSWorldLayerTop];
+    
+    self.cupNotifyNumberLabel = [[SKLabelNode alloc] initWithFontNamed:FONT_NAME_CUTOON];
+    self.cupNotifyNumberLabel.fontSize = [UniversalUtil universalFontSize:30.];
+    self.cupNotifyNumberLabel.position = CGPointMake(self.cupNotify.position.x, self.cupNotify.position.y - [UniversalUtil universalDelta:10]);
+    self.cupNotifyNumberLabel.zPosition = self.cupNotify.zPosition + 1;
+    self.cupNotifyNumberLabel.userInteractionEnabled = NO;
+    [self addNode:self.cupNotifyNumberLabel atWorldLayer:GSWorldLayerTop];
     
     HSButtonSprite *parentNode = [[HSButtonSprite alloc] initWithTitle:@"Parent"
                                                               norImage:@"about_btn_nor"
