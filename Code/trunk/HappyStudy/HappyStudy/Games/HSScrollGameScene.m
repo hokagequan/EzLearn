@@ -242,6 +242,28 @@
     self.uikitContainer.hidden = show;
 }
 
+- (void)showAnswer:(NSString *)character completion:(void (^)())completion {
+    SKLabelNode *answerLable = [SKLabelNode labelNodeWithFontNamed:FONT_NAME_HP];
+    answerLable.text = character;
+    answerLable.fontColor = [UIColor redColor];
+    answerLable.fontName = FONT_NAME_HP;
+    answerLable.fontSize = 100;
+    answerLable.zPosition = 1000;
+    answerLable.position = CGPointMake(self.size.width / 2, self.size.height / 2);
+    [self addNode:answerLable atWorldLayer:HSSWorldLayerCharacter];
+    
+    SKAction *wait = [SKAction waitForDuration:1];
+    SKAction *done = [SKAction runBlock:^{
+        [answerLable removeFromParent];
+        
+        if (completion) {
+            completion();
+        }
+    }];
+    
+    [answerLable runAction:[SKAction sequence:@[wait, done]]];
+}
+
 - (void)refreshCurrentItem {
     [self.gameMgr resetSignleQuestionAnalyze];
     [self addCharacters:self.curIndex];

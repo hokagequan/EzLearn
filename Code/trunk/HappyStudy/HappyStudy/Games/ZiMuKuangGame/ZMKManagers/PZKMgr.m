@@ -89,8 +89,10 @@
     ZMKOption *option = model.options[self.optionIndex];
     
     [self.gameScene playSound:option.sound completion:^{
-        [self.gameScene playCorrectMaleSound];
+        [self.gameScene performSelector:@selector(playCorrectMaleSound) withObject:nil afterDelay:0.3];
     }];
+    
+    [self.gameScene showAnswer:option.word completion:nil];
     
     self.clickCount++;
     

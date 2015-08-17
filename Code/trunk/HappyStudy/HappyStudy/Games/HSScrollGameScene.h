@@ -63,5 +63,6 @@ typedef NS_ENUM(NSInteger, zPostion) {
 - (void)clickRight:(id)sender;
 - (void)loadGameMgr;
 - (void)gameOver;
+- (void)showAnswer:(NSString *)character completion:(void (^)())completion;
 
 @end
