@@ -24,14 +24,14 @@
         return;
     }
     
-    NSMutableDictionary *userInfo = [[NSUserDefaults standardUserDefaults] objectForKey:kPROPERTY_USER_INFO];
-    if (!userInfo) {
-        userInfo = [NSMutableDictionary dictionary];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kPROPERTY_USER_INFO]) {
+        userInfo = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:kPROPERTY_USER_INFO]];
     }
     
-    NSMutableDictionary *propertyInfo = userInfo[self.name];
-    if (!propertyInfo) {
-        propertyInfo = [NSMutableDictionary dictionary];
+    NSMutableDictionary *propertyInfo = [NSMutableDictionary dictionary];
+    if (userInfo[self.name]) {
+        propertyInfo = [NSMutableDictionary dictionaryWithDictionary:userInfo[self.name]];
     }
     
     propertyInfo[kPROPERTY_PLAY_TIME] = @(playTime);
@@ -48,7 +48,7 @@
     
     NSMutableDictionary *userInfo = [[NSUserDefaults standardUserDefaults] objectForKey:kPROPERTY_USER_INFO];
     
-    return [userInfo[self.name][kPROPERTY_USER_INFO] doubleValue];
+    return [userInfo[self.name][kPROPERTY_PLAY_TIME] doubleValue];
 }
 
 @end

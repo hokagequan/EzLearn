@@ -153,7 +153,10 @@ typedef enum {
     cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [cell.icon sd_setImageWithURL:[NSURL URLWithString:task.picUrl]];
+    if ([task.picUrl isKindOfClass:[NSString class]]) {
+        [cell.icon sd_setImageWithURL:[NSURL URLWithString:task.picUrl]];
+    }
+    
     cell.titleLab.text = task.detail;
     
     return cell;

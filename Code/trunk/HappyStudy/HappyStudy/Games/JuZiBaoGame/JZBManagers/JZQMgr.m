@@ -66,6 +66,7 @@
         }
         
         [model loadIndexWithSentence:model.sentence];
+        [GlobalUtil randomArray:model.words];
         [models addObject:model];
         
         index--;

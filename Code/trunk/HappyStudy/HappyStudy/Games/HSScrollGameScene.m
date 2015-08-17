@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSMutableArray *layers;
 @property (nonatomic) BOOL worldMovedForUpdate;
 
+@property (strong, nonatomic) NSDate *beginDate;
+
 @end
 
 @implementation HSScrollGameScene
@@ -43,6 +45,8 @@
 - (void)didMoveToView:(SKView *)view {
     [super didMoveToView:view];
     
+    self.beginDate = [NSDate date];
+    
     [self addIndexController];
     [self.gameMgr resetGameAnalyze];
     [self.gameMgr resetSignleQuestionAnalyze];
@@ -58,6 +62,7 @@
 }
 
 - (void)willMoveFromView:(SKView *)view {
+    [AccountMgr sharedInstance].user.playTime += [[NSDate date] timeIntervalSinceDate:self.beginDate];
     [self clearIndexController];
     [self removeObserver:self forKeyPath:@"curIndex"];
     [self removeObserver:self forKeyPath:@"worldMovedForUpdate"];

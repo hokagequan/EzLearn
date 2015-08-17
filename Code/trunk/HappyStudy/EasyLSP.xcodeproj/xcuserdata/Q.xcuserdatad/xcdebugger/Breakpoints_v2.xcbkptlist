@@ -83,13 +83,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HappyStudy/Games/JuZiBaoGame/JZBManagers/JZQMgr.m"
-            timestampString = "461168867.480541"
+            filePath = "HappyStudy/Managers/HttpReqMgr.m"
+            timestampString = "461339939.509694"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "-appendDataWithInfo:"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "+requestGetAppShareContent:score:playTime:completion:failure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

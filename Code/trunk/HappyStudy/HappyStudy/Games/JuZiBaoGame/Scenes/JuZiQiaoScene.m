@@ -26,7 +26,7 @@
 @interface JuZiQiaoScene()
 
 @property (strong, nonatomic) SKNode *riverLayer1;
-@property (strong, nonatomic) SKSpriteNode *draggingLeaf;
+@property (strong, nonatomic) OptionLeaf *draggingLeaf;
 
 @property (strong, nonatomic) NSMutableArray *leafRandomPositions;
 @property (strong, nonatomic) NSMutableArray *emptyLeafs;
@@ -80,6 +80,7 @@
 
 - (void)willMoveFromView:(nonnull SKView *)view {
     [self removeAllActions];
+    [self.frog removeFromParent];
     
     [super willMoveFromView:view];
 }
@@ -126,21 +127,26 @@
     return CGPointMake(position.x, position.y + self.frog.size.height / 2 + 8);
 }
 
-- (void)attractLeaf:(SKSpriteNode *)leaf {
+- (void)attractLeaf:(OptionLeaf *)leaf {
     for (int i = 0; i < 12; i++) {
         CGPoint attractPosition = [UniversalUtil universaliPadPoint:[self leafPositionWithIndex:i]
                                                         iPhonePoint:CGPOINT_NON
                                                             offsetX:0
-                                                            offsetY:0];
+                                                            offsetY:-30];
         if (DistanceBetweenPoints(leaf.position, attractPosition) <= 20) {
             leaf.position = attractPosition;
             
             [self.myGameMgr loadAnswerWithIndex:[self.questionLeafs indexOfObject:leaf] add:YES];
             
+            if (![self.myGameMgr.currentAnswers containsObject:@(-1)]) {
+                self.myGameMgr.stat |= JZQGameStatPrepareCheck;
+            }
+            
             return;
         }
     }
     
+    leaf.position = leaf.originalLocation;
     [self.myGameMgr loadAnswerWithIndex:[self.questionLeafs indexOfObject:leaf] add:NO];
 }
 
@@ -183,7 +189,7 @@
         CGPoint position = [UniversalUtil universaliPadPoint:[self leafPositionWithIndex:i]
                                                  iPhonePoint:CGPOINT_NON
                                                      offsetX:0
-                                                     offsetY:0];
+                                                     offsetY:-30];
         
         SKSpriteNode *emptyLeaf = [SKSpriteNode spriteNodeWithImageNamed:@"leaf_empty"];
         emptyLeaf.size = [UniversalUtil universaliPadSize:ZOOM_IN_SIZE
@@ -278,6 +284,11 @@
     
     for (int i = 0; i < self.questionLeafs.count; i++) {
         CGPoint position = [self leafPositionWithIndex:i];
+        position = [UniversalUtil universaliPadPoint:[self leafPositionWithIndex:i]
+                                         iPhonePoint:CGPOINT_NON
+                                             offsetX:0
+                                             offsetY:-30];
+        
         NSValue *value = [NSValue valueWithCGPoint:position];
         [self.frog.allJumpPositions addObject:value];
     }
@@ -318,7 +329,12 @@
         return;
     }
     
-    self.frog.position = [self adjustFrogPositionWith:self.frogBasePosition];
+    CGPoint position = [UniversalUtil universaliPadPoint:self.frogBasePosition
+                                             iPhonePoint:CGPOINT_NON
+                                                 offsetX:-20
+                                                 offsetY:0];
+    
+    self.frog.position = [self adjustFrogPositionWith:position];
     
     JZQModel *model = self.myGameMgr.models[index];
     
@@ -342,7 +358,8 @@
         leaf.position = [UniversalUtil universaliPadPoint:position
                                               iPhonePoint:CGPOINT_NON
                                                   offsetX:0
-                                                  offsetY:0];
+                                                  offsetY:-30];
+        leaf.originalLocation = leaf.position;
         leaf.label.fontColor = [UIColor whiteColor];
         leaf.label.fontSize = [UniversalUtil universalFontSize:30];
         leaf.label.fontName = FONT_NAME_HP;
@@ -508,7 +525,6 @@
         self.draggingLeaf = [OptionLeaf optionLeafWithNode:node];
     }
     else if ([name isEqualToString:kFROG]) {
-        self.myGameMgr.stat |= JZQGameStatPrepareCheck;
     }
 }
 
