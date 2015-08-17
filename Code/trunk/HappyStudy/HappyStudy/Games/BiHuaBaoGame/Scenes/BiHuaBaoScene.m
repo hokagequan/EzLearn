@@ -224,8 +224,8 @@ typedef enum {
     BHBOption *option = model.options[index];
 #ifdef EZLEARN_DEBUG
 #else
-    [self playCorrectFemaleSoundCompletion:^{
-        [self playSound:option.sound completion:nil];
+    [self playSound:option.sound completion:^{
+        [self performSelector:@selector(playCorrectFemaleSound) withObject:nil afterDelay:0.3];
     }];
 #endif
 }

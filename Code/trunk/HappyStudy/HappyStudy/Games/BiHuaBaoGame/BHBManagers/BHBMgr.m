@@ -39,6 +39,9 @@
     NSMutableArray *models = self.models;
     
     self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
+    if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
+        self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+    }
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
     self.curGroupCount = pos - array.count + 1;
     
