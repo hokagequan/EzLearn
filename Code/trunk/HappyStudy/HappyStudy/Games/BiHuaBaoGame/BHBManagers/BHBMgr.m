@@ -84,7 +84,9 @@
     [self correct:model.modelID options:options];
     
     self.score++;
+    self.life++;
     [self.gameScene refreshScore:self.score];
+    [self.gameScene changeLifeWith:self.life];
     if (self.gameScene.curIndex == self.models.count - 1) {
         if (self.maxGroupNum != self.models.count) {
             [self.gameScene clickRight:nil];
@@ -119,16 +121,26 @@
     }
 }
 
-- (void)decreaseScore {
+- (BOOL)decreaseScore {
+    self.life--;
+    if (self.life < 0) {
+        self.life = 0;
+    }
+    
+    [self.gameScene changeLifeWith:self.life];
+    
     self.score--;
     if (self.score < 0) {
         self.score = 0;
     }
+    
+    return NO;
 }
 
 - (void)gameStart {
     self.leftTime = self.totalTime;
     self.stat = BHBGameStatStart;
+    self.life = MAX_LIFE;
     [self.gameScene refreshTime:self.leftTime];
     
     if (self.timer) {

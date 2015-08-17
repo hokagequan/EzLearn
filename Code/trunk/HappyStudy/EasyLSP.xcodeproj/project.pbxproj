@@ -22,6 +22,8 @@
 		1060B9981A1C9A0C00DD409C /* SettingMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 1060B9971A1C9A0C00DD409C /* SettingMgr.m */; };
 		1060B9A51A1D929900DD409C /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1060B9A21A1D929900DD409C /* SVProgressHUD.bundle */; };
 		1060B9A61A1D929900DD409C /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1060B9A41A1D929900DD409C /* SVProgressHUD.m */; };
+		10625CD81B8177E600022C80 /* BHBInvidualMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 10625CD71B8177E600022C80 /* BHBInvidualMgr.m */; };
+		10625CDB1B81891D00022C80 /* ZCBInvidualMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 10625CDA1B81891D00022C80 /* ZCBInvidualMgr.m */; };
 		107868F91B305BC1006C7868 /* PZKIndividualMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 107868F81B305BC1006C7868 /* PZKIndividualMgr.m */; };
 		107868FC1B305F59006C7868 /* SKNode+PlaySound.m in Sources */ = {isa = PBXBuildFile; fileRef = 107868FB1B305F59006C7868 /* SKNode+PlaySound.m */; };
 		107868FF1B306300006C7868 /* PZCMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 107868FE1B306300006C7868 /* PZCMgr.m */; };
@@ -1728,6 +1730,10 @@
 		1060B9A21A1D929900DD409C /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		1060B9A31A1D929900DD409C /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		1060B9A41A1D929900DD409C /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		10625CD61B8177E600022C80 /* BHBInvidualMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHBInvidualMgr.h; sourceTree = "<group>"; };
+		10625CD71B8177E600022C80 /* BHBInvidualMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHBInvidualMgr.m; sourceTree = "<group>"; };
+		10625CD91B81891D00022C80 /* ZCBInvidualMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCBInvidualMgr.h; sourceTree = "<group>"; };
+		10625CDA1B81891D00022C80 /* ZCBInvidualMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCBInvidualMgr.m; sourceTree = "<group>"; };
 		107868F71B305BC1006C7868 /* PZKIndividualMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZKIndividualMgr.h; sourceTree = "<group>"; };
 		107868F81B305BC1006C7868 /* PZKIndividualMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZKIndividualMgr.m; sourceTree = "<group>"; };
 		107868FA1B305F59006C7868 /* SKNode+PlaySound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKNode+PlaySound.h"; path = "Customs/SKNode+PlaySound.h"; sourceTree = "<group>"; };
@@ -6465,6 +6471,10 @@
 				10F52E1A1B01E77100BF9156 /* BHBMgr.m */,
 				10E36F631B39056900C1D01B /* ZCBMgr.h */,
 				10E36F641B39056900C1D01B /* ZCBMgr.m */,
+				10625CD61B8177E600022C80 /* BHBInvidualMgr.h */,
+				10625CD71B8177E600022C80 /* BHBInvidualMgr.m */,
+				10625CD91B81891D00022C80 /* ZCBInvidualMgr.h */,
+				10625CDA1B81891D00022C80 /* ZCBInvidualMgr.m */,
 			);
 			path = BHBManagers;
 			sourceTree = "<group>";
@@ -8142,6 +8152,7 @@
 				10DA2FF31AFBB0E600649678 /* DDSHoleTypeTwo.m in Sources */,
 				10D4CE841B1DA7C100755ED3 /* PinZiChuiIndividualScene.m in Sources */,
 				10D1073019FF1D9200CA44E4 /* HSScrollGameScene.m in Sources */,
+				10625CD81B8177E600022C80 /* BHBInvidualMgr.m in Sources */,
 				107868FC1B305F59006C7868 /* SKNode+PlaySound.m in Sources */,
 				10C888A31B297E7B00082393 /* ChooseIndividualScene.m in Sources */,
 				107C4B8B19ED1FFE00EDA4B7 /* CGOption.m in Sources */,
@@ -8253,6 +8264,7 @@
 				10D1071419FE215B00CA44E4 /* CGCharacter.m in Sources */,
 				10D1074219FF6E7800CA44E4 /* HttpRspErrorUtil.m in Sources */,
 				10DA30991B04D3EA00649678 /* JZBQuestion.m in Sources */,
+				10625CDB1B81891D00022C80 /* ZCBInvidualMgr.m in Sources */,
 				10DA30591AFF94EC00649678 /* ZMKModel.m in Sources */,
 				10E945F81A24102400E16624 /* Reachability.m in Sources */,
 				10D4CE351B155E3600755ED3 /* EnvironmentCrab.m in Sources */,
