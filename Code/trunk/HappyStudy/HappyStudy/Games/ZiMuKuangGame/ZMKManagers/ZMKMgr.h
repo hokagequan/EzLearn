@@ -11,7 +11,7 @@
 #import "HSLabelSprite.h"
 
 #define ORIGINAL_DROPPING_TIME 3.4
-#define MIN_DROPPING_TIME 2.0
+#define MIN_DROPPING_TIME 1.0
 
 @class ZiMuKuangScene;
 
