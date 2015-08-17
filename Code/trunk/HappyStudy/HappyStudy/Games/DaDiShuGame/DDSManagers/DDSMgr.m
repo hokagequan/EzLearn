@@ -214,6 +214,10 @@ typedef enum {
     [self.gameScene addCharacters:self.gameScene.curIndex];
 }
 
+- (void)setStartStat {
+    self.stat |= GameStatStart;
+}
+
 - (void)setReloadStat:(BOOL)reload {
     if (reload) {
         self.stat |= GameStatReloadStat;

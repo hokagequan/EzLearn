@@ -266,7 +266,7 @@
 
 - (void)addCharacters:(NSInteger)index {
     [self.myGameMgr setReloadStat:YES];
-    [self.gameMgr gameStart];
+    [self.myGameMgr setStartStat];
     if (self.myGameMgr.models.count <= index) {
         return;
     }
