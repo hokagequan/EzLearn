@@ -52,7 +52,7 @@
         NSDictionary *dict = array[index];
         NSDictionary *group = dict[@"Question"];
         JZQModel *model = [[JZQModel alloc] init];
-        model.modelID = dict[@"QuestionID"];
+        model.modelID = dict[@"QuestionsID"];
         model.indexStr = [NSString stringWithFormat:@"%@", @(pos + 1 - i)];
         model.sentence = group[@"sentence"];
         
@@ -109,7 +109,7 @@
                 }
                 else {
                     [self.gameScene playWrongSound];
-                    [self.gameScene frogFallDown];
+                    [self.gameScene frogFallDownWithLeafIndex:self.gameScene.frog.curLocationIndex];
                     self.stat &= ~JZQGameStatCheck;
                 }
             }
@@ -130,7 +130,7 @@
         
     [HttpReqMgr requestGetGameData:[AccountMgr sharedInstance].user.name
                             gameID:StudyGameJuZiQiao
-                              from:0
+                              from:-1
                              count:1000
                         completion:^(NSDictionary *info) {
                             [self appendDataWithInfo:info];
@@ -170,18 +170,25 @@
                         }];
 }
 
-- (void)loadAnswerWithIndex:(NSInteger)index add:(BOOL)add {
+- (void)loadAnswerWithIndex:(NSInteger)index toLocation:(NSInteger)location add:(BOOL)add {
     if (index >= self.currentAnswers.count) {
         return;
     }
     
-    if (add) {
         JZQModel *model = self.models[self.gameScene.curIndex];
         JZQWord *word = model.words[index];
-        self.currentAnswers[index] = @(word.index);
+    if (add) {
+        self.currentAnswers[location] = @(word.index);
     }
     else {
-        self.currentAnswers[index] = @(-1);
+        if ([self.currentAnswers containsObject:@(word.index)]) {
+            NSInteger theLocation = [self.currentAnswers indexOfObject:@(word.index)];
+            self.currentAnswers[theLocation] = @(-1);
+        }
+    }
+    
+    if (![self.currentAnswers containsObject:@(-1)]) {
+        self.stat |= JZQGameStatPrepareCheck;
     }
 }
 

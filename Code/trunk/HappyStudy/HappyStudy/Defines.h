@@ -51,8 +51,8 @@ typedef enum {
 // Server 3
 #define HSURL @"http://52.74.225.18/app/interface.php?schoolid=kudospark&method="
 
-#define WEIXIN_APP_KEY @""
-#define QQ_APP_ID @""
+#define WEIXIN_APP_KEY @"wx8e810d6b08a6af48"
+#define QQ_APP_ID @"1104652709"
 
 #define FONT_NAME_CUTOON @"FZKaTong-M19S"
 #define FONT_NAME_HP @"FZHuPo-M04S"

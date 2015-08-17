@@ -13,6 +13,10 @@
 
 @implementation PZKIndividualMgr
 
+- (CGFloat)deltaYZero {
+    return 40;
+}
+
 - (void)wrong {
     [self.gameScene playWrongSound];
     

@@ -9,6 +9,7 @@
 #import "ZuCiBaoScene.h"
 #import "ZCBMgr.h"
 #import "BHBModel.h"
+#import "SKNode+PlaySound.h"
 
 @implementation ZuCiBaoScene
 
@@ -56,7 +57,9 @@
         }
     }
     
+    [self playCorrectFemaleSoundCompletion:^{
     [GlobalUtil speakText:string];
+    }];
 }
 
 @end

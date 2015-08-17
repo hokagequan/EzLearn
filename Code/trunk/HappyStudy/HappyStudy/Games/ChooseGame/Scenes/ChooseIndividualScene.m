@@ -13,8 +13,6 @@
 
 - (void)didMoveToView:(nonnull SKView *)view {
     [super didMoveToView:view];
-    
-    self.uikitContainer.userInteractionEnabled = NO;
 }
 
 #pragma mark - Override
@@ -23,7 +21,10 @@
     
     for (HSButtonSprite *button in self.buttons) {
         if (![button.name isEqualToString:kSoundButton]) {
-            button.position = CGPointMake(button.position.x, button.position.y + [UniversalUtil universalDelta:10]);
+            button.position = [UniversalUtil universaliPadPoint:CGPointMake(button.position.x, 122)
+                                                    iPhonePoint:CGPointMake(button.position.x, 60)
+                                                        offsetX:0
+                                                        offsetY:0];
         }
     }
 }

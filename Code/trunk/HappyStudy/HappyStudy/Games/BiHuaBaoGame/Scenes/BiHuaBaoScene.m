@@ -224,8 +224,8 @@ typedef enum {
     BHBOption *option = model.options[index];
 #ifdef EZLEARN_DEBUG
 #else
-    [self playSound:option.sound completion:^{
-        
+    [self playCorrectFemaleSoundCompletion:^{
+        [self playSound:option.sound completion:nil];
     }];
 #endif
 }
@@ -407,7 +407,6 @@ typedef enum {
         
         if (card.isAnswer) {
             [self speakWithOptionIndex:index];
-            [self playCorrectFemaleSound];
             [self showCorrectCongratulations:CGPointMake(card.position.x, card.position.y + card.size.height / 2)
                                   completion:^{
                                       [self.myGameMgr correct];

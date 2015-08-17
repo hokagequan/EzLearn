@@ -34,9 +34,24 @@
 @property (strong, nonatomic) NSString *shareText;
 @property (strong, nonatomic) UIImage *shareImg;
 
+@property (strong, nonatomic) NSDate *beginDate;
+
 @end
 
 @implementation HSGameScene
+
+- (void)didMoveToView:(nonnull SKView *)view {
+    [super didMoveToView:view];
+    
+    self.beginDate = [NSDate date];
+}
+
+- (void)willMoveFromView:(nonnull SKView *)view {
+    [super willMoveFromView:view];
+    
+    double time = [AccountMgr sharedInstance].user.playTime;
+    [AccountMgr sharedInstance].user.playTime = time + [[NSDate date] timeIntervalSinceDate:self.beginDate];
+}
 
 - (void)buildWorld {}
 

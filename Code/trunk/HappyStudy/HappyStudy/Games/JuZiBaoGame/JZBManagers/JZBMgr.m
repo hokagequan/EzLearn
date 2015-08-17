@@ -92,7 +92,6 @@
 
 - (void)correct {
     [self.gameScene frogHappy];
-    [self.gameScene playCorrectMaleSound];
     
     self.clickCount++;
     JZBModel *model = self.models[self.gameScene.curIndex];
@@ -112,10 +111,14 @@
         self.gameScene.isFrogAnimationFinish = NO;
         if (self.isAnswer) {
             self.gameScene.isSpeakingFinish = NO;
+            
+            [self.gameScene playCorrectMaleSoundCompletion:^{
             JZBModel *model = self.models[self.gameScene.curIndex];
             AVSpeechSynthesizer *synth = [GlobalUtil speakText:[model combineSentence]];
             synth.delegate = self;
-            [self.gameScene setFrogJumpTarget:model.question.titles.count];
+            }];
+            
+            [self.gameScene setFrogJumpTarget:3];
         }
         else {
             [self.gameScene setFrogJumpTarget:self.questionIndex];

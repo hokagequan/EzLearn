@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100564141B8167F8000E6781 /* basket_inner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 100564101B8167F8000E6781 /* basket_inner@2x.png */; };
+		100564151B8167F8000E6781 /* basket_inner@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 100564111B8167F8000E6781 /* basket_inner@2x~ipad.png */; };
+		100564161B8167F8000E6781 /* basket_outter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 100564121B8167F8000E6781 /* basket_outter@2x.png */; };
+		100564171B8167F8000E6781 /* basket_outter@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 100564131B8167F8000E6781 /* basket_outter@2x~ipad.png */; };
 		10064AF019FBE35800D77A7A /* GlobalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 10064AEF19FBE35800D77A7A /* GlobalUtil.m */; };
 		10064AF319FC976100D77A7A /* HSCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10064AF219FC976100D77A7A /* HSCharacter.m */; };
 		10098B6F1B51545F0082FC8B /* ei1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 10098B6D1B51545F0082FC8B /* ei1.mp3 */; };
@@ -1702,6 +1706,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		100564101B8167F8000E6781 /* basket_inner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basket_inner@2x.png"; sourceTree = "<group>"; };
+		100564111B8167F8000E6781 /* basket_inner@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basket_inner@2x~ipad.png"; sourceTree = "<group>"; };
+		100564121B8167F8000E6781 /* basket_outter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basket_outter@2x.png"; sourceTree = "<group>"; };
+		100564131B8167F8000E6781 /* basket_outter@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basket_outter@2x~ipad.png"; sourceTree = "<group>"; };
 		10064AEE19FBE35800D77A7A /* GlobalUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalUtil.h; path = Utils/GlobalUtil.h; sourceTree = "<group>"; };
 		10064AEF19FBE35800D77A7A /* GlobalUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalUtil.m; path = Utils/GlobalUtil.m; sourceTree = "<group>"; };
 		10064AF119FC976100D77A7A /* HSCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HSCharacter.h; path = Sprites/HSCharacter.h; sourceTree = "<group>"; };
@@ -4452,6 +4460,10 @@
 		10D1FD6D19F8AD9800CA44E4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				100564101B8167F8000E6781 /* basket_inner@2x.png */,
+				100564111B8167F8000E6781 /* basket_inner@2x~ipad.png */,
+				100564121B8167F8000E6781 /* basket_outter@2x.png */,
+				100564131B8167F8000E6781 /* basket_outter@2x~ipad.png */,
 				10A636761B3D409E0094E23E /* about_bg@2x.png */,
 				10A636771B3D409E0094E23E /* about_bg@2x~ipad.png */,
 				10A636781B3D409E0094E23E /* about_btn_nor@2x.png */,
@@ -6641,6 +6653,7 @@
 				10D1044919FDC70F00CA44E4 /* leng4.mp3 in Resources */,
 				10D1025619FDC70F00CA44E4 /* ao3.mp3 in Resources */,
 				10A6358C1B3D2A020094E23E /* BHBCrab.atlas in Resources */,
+				100564171B8167F8000E6781 /* basket_outter@2x~ipad.png in Resources */,
 				10D1026C19FDC70F00CA44E4 /* bei1.mp3 in Resources */,
 				10D102A619FDC70F00CA44E4 /* cha3.mp3 in Resources */,
 				10D103AE19FDC70F00CA44E4 /* hong1.mp3 in Resources */,
@@ -7095,6 +7108,7 @@
 				10D1070519FDC70F00CA44E4 /* zui4.mp3 in Resources */,
 				10D1059219FDC70F00CA44E4 /* shang4.mp3 in Resources */,
 				10D1032919FDC70F00CA44E4 /* dou1.mp3 in Resources */,
+				100564151B8167F8000E6781 /* basket_inner@2x~ipad.png in Resources */,
 				10D1041C19FDC70F00CA44E4 /* kua4.mp3 in Resources */,
 				10D1032F19FDC70F00CA44E4 /* du4.mp3 in Resources */,
 				10D1052019FDC70F00CA44E4 /* po1.mp3 in Resources */,
@@ -7426,6 +7440,7 @@
 				10A6372D1B3D409F0094E23E /* about_btn_sel@2x~ipad.png in Resources */,
 				10D1048B19FDC70F00CA44E4 /* man4.mp3 in Resources */,
 				10D1035C19FDC70F00CA44E4 /* feng4.mp3 in Resources */,
+				100564161B8167F8000E6781 /* basket_outter@2x.png in Resources */,
 				10A637701B3D409F0094E23E /* fort@2x.png in Resources */,
 				10D1069519FDC70F00CA44E4 /* yuan1.mp3 in Resources */,
 				10D106BA19FDC70F00CA44E4 /* zhai1.mp3 in Resources */,
@@ -7773,6 +7788,7 @@
 				10A637941B3D409F0094E23E /* lock@2x.png in Resources */,
 				10EC3D7519E92C8E005DB887 /* Images.xcassets in Resources */,
 				10D1064419FDC70F00CA44E4 /* xiao2.mp3 in Resources */,
+				100564141B8167F8000E6781 /* basket_inner@2x.png in Resources */,
 				10D1039119FDC70F00CA44E4 /* guo1.mp3 in Resources */,
 				10D106F019FDC70F00CA44E4 /* zhui4.mp3 in Resources */,
 				10A637791B3D409F0094E23E /* game_sel_cloud_far@2x~ipad.png in Resources */,

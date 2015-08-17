@@ -13,5 +13,6 @@
 - (void)addFruit:(HSLabelSprite *)fruit;
 - (void)removeSingleFruit;
 - (void)clean;
+- (void)loadUIWithName:(NSString *)name;
 
 @end

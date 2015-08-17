@@ -28,6 +28,8 @@
 }
 
 - (void)wrong {
+    [self.gameScene playWrongSound];
+    
     self.clickCount++;
     DDSModel *model = self.models[self.gameScene.curIndex];
     NSMutableArray *options = [NSMutableArray array];

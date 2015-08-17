@@ -51,10 +51,7 @@
             CGOptionModel *optionModel = chooseModel.options[j];
             CGPoint pos = [self.optionPositions[j] CGPointValue];
             CGOption *ballon = [[[self ballonClass:(j % 4)] alloc] initWithString:optionModel.title
-                                                                         position:[UniversalUtil universaliPadPoint:pos
-                                                                                                        iPhonePoint:CGPOINT_NON
-                                                                                                            offsetX:0
-                                                                                                            offsetY:0]
+                                                                         position:CGPointMake(pos.x, pos.y)
                                                                          isAnswer:optionModel.isAnswer];
             ballon.requestedAnimation = HSAnimationStateIdle;
             [self addNode:ballon atWorldLayer:HSSWorldLayerCharacter];

@@ -94,8 +94,8 @@
             button.alpha = 0.0;
         }
         else if ([button.name isEqualToString:kBackButton]) {
-            button.position = [UniversalUtil universaliPadPoint:CGPointMake(98, 122)
-                                                    iPhonePoint:CGPointMake(49, 61)
+            button.position = [UniversalUtil universaliPadPoint:CGPointMake(962, 122)
+                                                    iPhonePoint:CGPointMake(441, 61)
                                                         offsetX:0
                                                         offsetY:0];
         }

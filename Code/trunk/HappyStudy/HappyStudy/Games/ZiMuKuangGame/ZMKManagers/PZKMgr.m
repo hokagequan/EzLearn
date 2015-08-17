@@ -21,6 +21,46 @@
 
 @implementation PZKMgr
 
+- (void)appendDataWithInfo:(NSDictionary *)info {
+    NSArray *array = info[@"Questions"];
+    NSMutableArray *models = self.models;
+    
+    self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
+    if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
+        self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+    }
+    
+    NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
+    self.curGroupCount = pos - array.count + 1;
+    
+    NSInteger index = array.count - 1;
+    for (int i = 0; i < array.count; i++) {
+        NSDictionary *dict = array[index];
+        NSDictionary *group = dict[@"Question"];
+        ZMKModel *model = [[ZMKModel alloc] init];
+        model.modelID = dict[@"QuestionsID"];
+        model.indexStr = [NSString stringWithFormat:@"%@", @(pos + 1 + i)];
+        ZMKQuestion *qModel = [[ZMKQuestion alloc] init];
+        qModel.title = group[@"part"];
+        model.question = qModel;
+        
+        NSArray *options = group[@"choices"];
+        for (int j = 0; j < options.count; j++) {
+            NSDictionary *detail = options[j];
+            ZMKOption *option = [[ZMKOption alloc] init];
+            option.title = detail[@"part"];
+            option.sound = detail[@"audio_path"];
+            option.isAnswer = [detail[@"correct"] boolValue];
+            
+            [model.options addObject:option];
+        }
+        
+        [models addObject:model];
+        
+        index--;
+    }
+}
+
 - (NSString *)characterInFruit {
     ZMKModel *model = self.models[self.gameScene.curIndex];
     if (self.optionIndex < model.options.count) {
@@ -45,8 +85,15 @@
 }
 
 - (void)correct {
-    self.clickCount++;
     ZMKModel *model = self.models[self.gameScene.curIndex];
+    ZMKOption *option = model.options[self.optionIndex];
+    
+    [self.gameScene playSound:option.sound completion:^{
+        [self.gameScene playCorrectMaleSound];
+    }];
+    
+    self.clickCount++;
+    
     NSMutableArray *options = [NSMutableArray array];
     for (ZMKOption *option in model.options) {
         [options addObject:option.title];
@@ -60,12 +107,6 @@
     [self.gameScene changeLifeWith:self.life];
     
     self.basketFruitNumber++;
-    
-    ZMKOption *option = model.options[self.optionIndex];
-    
-    [self.gameScene playSound:option.sound completion:^{
-        [self.gameScene playCorrectMaleSound];
-    }];
 }
 
 - (void)gameStart {
@@ -117,6 +158,23 @@
             }
         }
     }
+    else if ([self.gameScene.fruit.name isEqualToString:@"new"]) {
+        if ([self isCurrentFruitCorrect] &&
+            self.gameScene.fruit.position.y <= self.gameScene.fruit.size.height + [self deltaYZero]) {
+            self.gameScene.fruit.name = @"old";
+            SKAction *zoomOut = [SKAction scaleTo:1.5 duration:0.3];
+            SKAction *zoomIn = [SKAction scaleTo:1.0 duration:0.3];
+            [self.gameScene.fruit runAction:[SKAction sequence:@[zoomOut, zoomIn]]];
+            
+            [self wrong];
+        }
+    }
+}
+
+- (BOOL)isCurrentFruitCorrect {
+    ZMKModel *model = self.models[self.gameScene.curIndex];
+    ZMKOption *option = model.options[self.optionIndex];
+    return option.isAnswer;
 }
 
 @end

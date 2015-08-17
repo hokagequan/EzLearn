@@ -74,7 +74,9 @@
         }
     }
     
+    [self playCorrectFemaleSoundCompletion:^{
     [GlobalUtil speakText:string];
+    }];
 }
 
 @end

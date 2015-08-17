@@ -78,10 +78,6 @@
             }
             
             NSValue *value = self.allJumpPositions[targetIndex];
-//            CGPoint targetPosition = [UniversalUtil universaliPadPoint:value.CGPointValue
-//                                                           iPhonePoint:CGPOINT_NON
-//                                                               offsetX:-20
-//                                                               offsetY:-30];
             CGPoint targetPosition = value.CGPointValue;
             targetPosition = CGPointMake(targetPosition.x, targetPosition.y + self.size.height / 2 + [UniversalUtil universalDelta:20]);
             

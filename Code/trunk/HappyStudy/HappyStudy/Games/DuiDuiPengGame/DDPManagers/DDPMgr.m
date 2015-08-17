@@ -76,6 +76,48 @@
     }
 }
 
+- (void)appendPPDCDataWithInfo:(NSDictionary *)info {
+    NSArray *array = info[@"Questions"];
+    NSMutableArray *models = self.models;
+    
+    self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
+    if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
+        self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+    }
+    
+    NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
+    self.curGroupCount = pos - array.count + 1;
+    
+    NSInteger index = array.count - 1;
+    for (int i = 0; i < array.count; i++) {
+        NSDictionary *dict = array[index];
+        NSArray *group = dict[@"Question"];
+        DDPGroupModel *gModel = [[DDPGroupModel alloc] init];
+        gModel.indexStr = [NSString stringWithFormat:@"%@", @(pos + 1 + i)];
+        gModel.modelID = [dict[@"QuestionsID"] integerValue];
+        for (int j = 0; j < group.count; j++) {
+            NSDictionary *modelInfo = group[j];
+            NSString *matchKey = [NSString stringWithFormat:@"%@_%@",
+                                  modelInfo[@"part_word1"],
+                                  modelInfo[@"part_word2"]];
+            
+            PinYinModel *pyModel = [[PinYinModel alloc] init];
+            pyModel.title = modelInfo[@"part_word1"];
+            pyModel.matchKey = matchKey;
+            [gModel.pyModels addObject:pyModel];
+            
+            HanZiModel *hzModel = [[HanZiModel alloc] init];
+            hzModel.title = modelInfo[@"part_word2"];
+            hzModel.matchKey = matchKey;
+            [gModel.hzModels addObject:hzModel];
+        }
+        
+        [models addObject:gModel];
+        
+        index--;
+    }
+}
+
 #pragma mark - 碰碰识字
 - (void)loadPengPengShiZiIndividualServerGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure {
     [self.models removeAllObjects];
@@ -171,7 +213,7 @@
                               from:0
                              count:1000
                         completion:^(NSDictionary *info) {
-                            [self appendDataWithInfo:info];
+                            [self appendPPDCDataWithInfo:info];
                             
                             if (self.models.count == 0) {
                                 if (failure) {
@@ -197,7 +239,7 @@
                               from:self.models.count
                              count:1000
                         completion:^(NSDictionary *info) {
-                            [self appendDataWithInfo:info];
+                            [self appendPPDCDataWithInfo:info];
                             
                             if (completion) {
                                 completion();

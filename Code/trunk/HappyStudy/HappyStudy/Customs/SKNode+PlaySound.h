@@ -12,8 +12,11 @@
 
 - (void)playSound:(NSString *)soundName completion:(void (^)())completion;
 - (void)playCorrectMaleSound;
+- (void)playCorrectMaleSoundCompletion:(void (^)())completion;
 - (void)playCorrectFemaleSound;
+- (void)playCorrectFemaleSoundCompletion:(void (^)())completion;
 - (void)playWrongSound;
+- (void)playBallonWrongSound;
 - (void)playGameOverSound;
 
 @end
