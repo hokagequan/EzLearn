@@ -37,7 +37,13 @@
     [self wrong:model.modelID options:options];
     
     if (![self decreaseScore]) {
-        [self goNext];
+        if (self.maxGroupNum == self.models.count &&
+            self.gameScene.curIndex == self.models.count - 1) {
+            [self.gameScene finishAll];
+        }
+        else {
+            [self goNext];
+        }
     }
 }
 
