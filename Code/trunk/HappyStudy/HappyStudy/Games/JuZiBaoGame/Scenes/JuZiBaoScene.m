@@ -155,7 +155,15 @@
                                                    offsetX:-20
                                                    offsetY:-30];
     self.frog.zPosition = zPostionCharacter + 10;
-    self.frog.allJumpPositions = [NSMutableArray arrayWithArray:self.leafPositions];
+    for (int i = 0; i < self.leafPositions.count; i++) {
+        CGPoint position = [self.leafPositions[i] CGPointValue];
+        position = [UniversalUtil universaliPadPoint:position
+                                         iPhonePoint:CGPOINT_NON
+                                             offsetX:-10
+                                             offsetY:-30];
+        NSValue *value = [NSValue valueWithCGPoint:position];
+        [self.frog.allJumpPositions addObject:value];
+    }
     [self.riverLayer1 addChild:self.frog];
     
     self.emptyLeaf = [SKSpriteNode spriteNodeWithImageNamed:@"leaf_empty"];
