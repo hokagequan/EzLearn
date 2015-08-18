@@ -91,6 +91,11 @@
         [self.gameScene loadFrogJumpPositions];
         self.stat &= ~JZQGameStatPrepareCheck;
         self.stat |= JZQGameStatCheck;
+        if ([self isCorrect]) {
+            JZQModel *model = self.models[self.gameScene.curIndex];
+            AVSpeechSynthesizer *synth = [GlobalUtil speakText:model.sentence];
+            synth.delegate = self;
+        }
     }
     
     if (self.stat & JZQGameStatCheck) {
@@ -118,11 +123,18 @@
             [self.gameScene frogHappy];
             [self.gameScene playCorrectMaleSound];
             self.stat &= ~JZQGameStatCheck;
-            JZQModel *model = self.models[self.gameScene.curIndex];
-            AVSpeechSynthesizer *synth = [GlobalUtil speakText:model.sentence];
-            synth.delegate = self;
         }
     }
+}
+
+- (BOOL)isCorrect {
+    BOOL result = NO;
+
+    for (int i = 0; i < self.currentAnswers.count; i++) {
+        result = (i == [self.currentAnswers[i] intValue]);
+    }
+    
+    return result;
 }
 
 - (void)loadJuZiQiaoServerGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure {
