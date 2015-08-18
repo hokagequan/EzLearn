@@ -135,7 +135,10 @@
                                                             offsetY:-30];
         if (DistanceBetweenPoints(leaf.position, attractPosition) <= [UniversalUtil universalDelta:20]) {
             leaf.position = attractPosition;
-            
+            if (leaf.locationIndex != -1) {
+                [self.myGameMgr loadAnswerWithIndex:-1 toLocation:leaf.locationIndex add:NO];
+            }
+            leaf.locationIndex = i;
             [self.myGameMgr loadAnswerWithIndex:[self.questionLeafs indexOfObject:leaf] toLocation:i add:YES];
             
             return;
@@ -304,6 +307,12 @@
                                                  offsetY:0];
     [self.frog.allJumpPositions addObject:[NSValue valueWithCGPoint:position]];
     [self setFrogJumpTarget:self.frog.allJumpPositions.count - 1];
+}
+
+- (void)resetOptionLeafs {
+    for (OptionLeaf *leaf in self.questionLeafs) {
+        leaf.locationIndex = -1;
+    }
 }
 
 - (void)setFrogJumpTarget:(NSInteger)index {
