@@ -16,7 +16,7 @@
 
 #define MAX_WRONG_TIMES         3
 #define ORIGINAL_STAY_TIME      3.0
-#define MIN_STAY_TIME           2.0
+#define MIN_STAY_TIME           1.0
 
 typedef enum {
     GameStatStart = 1,
