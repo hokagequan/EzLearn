@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, zPostion) {
 - (SKNode *)layerWith:(HSSWorldLayer)layerID;
 - (void)animationCorrect:(SKNode *)node;
 - (void)playSoundWrong;
-- (void)playSoundCorrect;
+- (void)playSoundCorrectCompletion:(void (^)())completion;
 - (void)expandIndexController;
 - (void)startFromBegain;
 - (void)finishAll;

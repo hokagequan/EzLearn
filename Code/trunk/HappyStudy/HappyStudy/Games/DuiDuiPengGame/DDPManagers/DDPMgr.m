@@ -97,7 +97,7 @@
         gModel.modelID = [dict[@"QuestionsID"] integerValue];
         for (int j = 0; j < group.count; j++) {
             NSDictionary *modelInfo = group[j];
-            NSString *matchKey = [NSString stringWithFormat:@"%@_%@",
+            NSString *matchKey = [NSString stringWithFormat:@"%@%@",
                                   modelInfo[@"part_word1"],
                                   modelInfo[@"part_word2"]];
             

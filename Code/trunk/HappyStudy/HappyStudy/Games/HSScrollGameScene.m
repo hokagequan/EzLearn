@@ -218,8 +218,12 @@
     [self runAction:[SKAction playSoundFileNamed:@"answer_wrong.wav" waitForCompletion:NO]];
 }
 
-- (void)playSoundCorrect {
-    [self runAction:[SKAction playSoundFileNamed:@"correct.wav" waitForCompletion:NO]];
+- (void)playSoundCorrectCompletion:(void (^)())completion {
+    [self runAction:[SKAction playSoundFileNamed:@"correct.wav" waitForCompletion:NO] completion:^{
+        if (completion) {
+            completion();
+        }
+    }];
 }
 
 - (void)refreshScore:(NSInteger)score {

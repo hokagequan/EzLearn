@@ -180,7 +180,9 @@
     DDPCharacter *character2 = self.selectCharacters[1];
     if ([character1.matchKey isEqualToString:character2.matchKey]) {
         // Match
-        [self playSoundCorrect];
+        [self playSoundCorrectCompletion:^{
+            [GlobalUtil speakText:character1.matchKey];
+        }];
         character1.requestedAnimation = HSAnimationStateDeath;
         character2.requestedAnimation = HSAnimationStateDeath;
         [self.selectCharacters removeAllObjects];
