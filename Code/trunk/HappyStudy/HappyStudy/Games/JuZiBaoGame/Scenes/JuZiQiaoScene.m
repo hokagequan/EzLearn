@@ -424,6 +424,10 @@
                           forState:UIControlStateNormal];
 }
 
+- (void)finishAll {
+    [super finishAll];
+}
+
 #pragma mark - Actions
 - (void)clickLeft:(id)sender {
     NSInteger index = self.curIndex;

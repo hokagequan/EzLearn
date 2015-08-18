@@ -113,6 +113,12 @@
                     [self.gameScene frogJump];
                 }
                 else {
+                    JZQModel *model = self.models[self.gameScene.curIndex];
+                    NSMutableArray *options = [NSMutableArray array];
+                    for (JZQWord *option in model.words) {
+                        [options addObject:option.word];
+                    }
+                    [self wrong:model.modelID options:options];
                     [self.gameScene playWrongSound];
                     [self.gameScene frogFallDownWithLeafIndex:self.gameScene.frog.curLocationIndex];
                     self.stat &= ~JZQGameStatCheck;
@@ -120,6 +126,12 @@
             }
         }
         else {
+            JZQModel *model = self.models[self.gameScene.curIndex];
+            NSMutableArray *options = [NSMutableArray array];
+            for (JZQWord *option in model.words) {
+                [options addObject:option.word];
+            }
+            [self correct:model.modelID options:options];
             [self.gameScene frogHappy];
             [self.gameScene playCorrectMaleSound];
             self.stat &= ~JZQGameStatCheck;
