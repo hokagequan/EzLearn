@@ -42,16 +42,22 @@
     CGChooseModel *chooseModel = [CGMgr sharedInstance].models[index];
     
     if (!self.question) {
-        self.question = [[CGQuestion alloc] initWithString:chooseModel.question.title
+        self.question = [[CGQuestion alloc] initWithString:chooseModel.indexStr
                                                  soundName:chooseModel.question.soundName
-                                                  position:CGPointMake(190, 459)];
+                                                  position:[UniversalUtil universaliPadPoint:CGPointMake(190, 459)
+                                                                                 iPhonePoint:CGPointMake(95, 190)
+                                                                                     offsetX:0
+                                                                                     offsetY:0]];
         [self addNode:self.question atWorldLayer:HSSWorldLayerCharacter];
         
         for (int j = 0; j < chooseModel.options.count; j++) {
             CGOptionModel *optionModel = chooseModel.options[j];
             CGPoint pos = [self.optionPositions[j] CGPointValue];
             CGOption *ballon = [[[self ballonClass:(j % 4)] alloc] initWithString:optionModel.title
-                                                                         position:CGPointMake(pos.x, pos.y)
+                                                                         position:[UniversalUtil universaliPadPoint:pos
+                                                                                                        iPhonePoint:CGPOINT_NON
+                                                                                                            offsetX:0
+                                                                                                            offsetY:0]
                                                                          isAnswer:optionModel.isAnswer];
             ballon.requestedAnimation = HSAnimationStateIdle;
             [self addNode:ballon atWorldLayer:HSSWorldLayerCharacter];
@@ -87,7 +93,10 @@
                 CGOptionModel *optionModel = chooseModel.options[j];
                 CGPoint pos = [self.optionPositions[j] CGPointValue];
                 CGOption *ballon = [[[self ballonClass:(j % 4)] alloc] initWithString:optionModel.title
-                                                                             position:CGPointMake(pos.x, pos.y)
+                                                                             position:[UniversalUtil universaliPadPoint:pos
+                                                                                                            iPhonePoint:CGPOINT_NON
+                                                                                                                offsetX:0
+                                                                                                                offsetY:0]
                                                                              isAnswer:optionModel.isAnswer];
                 ballon.requestedAnimation = HSAnimationStateIdle;
                 [self addNode:ballon atWorldLayer:HSSWorldLayerCharacter];
@@ -109,9 +118,9 @@
     [super chooseCorrect:optionSp];
 }
 
-- (void)loadGameMgr {
-    self.myGameMgr = [PZBMgr sharedInstance];
-}
+//- (void)loadGameMgr {
+//    self.myGameMgr = [PZBMgr sharedInstance];
+//}
 
 - (void)loadGameDataFrom:(NSInteger)fromPos count:(NSInteger)count Complete:(void (^)(void))complete failure:(void (^)(NSDictionary *))failure {
     CGMgr *mgr = [CGMgr sharedInstance];

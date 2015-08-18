@@ -69,6 +69,45 @@
     }
 }
 
+- (void)appendPZBDataWithInfo:(NSDictionary *)info {
+    NSArray *array = info[@"Questions"];
+    NSMutableArray *models = self.models;
+    
+    self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
+    if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
+        self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+    }
+    
+    NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
+    self.curGroupCount = pos - array.count + 1;
+    
+    NSInteger index = array.count - 1;
+    for (int i = 0; i < array.count; i++) {
+        NSDictionary *dict = array[index];
+        NSDictionary *group = dict[@"Question"];
+        CGChooseModel *cModel = [[CGChooseModel alloc] init];
+        cModel.modelID = [dict[@"QuestionsID"] integerValue];
+        cModel.indexStr = group[@"character"];
+        CGQuestionModel *qModel = [[CGQuestionModel alloc] init];
+        qModel.title = group[@"part"];
+        qModel.soundName = group[@"audio_path"];
+        qModel.word = group[@"character"];
+        cModel.question = qModel;
+        NSArray *options = @[group[@"choiceA"], group[@"choiceB"], group[@"choiceC"], group[@"choiceD"]];
+        NSInteger answer = [group[@"answer"] integerValue];
+        for (int i = 0; i < options.count; i++) {
+            CGOptionModel *oModel = [[CGOptionModel alloc] init];
+            oModel.title = options[i];
+            oModel.isAnswer = (i + 1) == answer;
+            [cModel.options addObject:oModel];
+        }
+        
+        [models addObject:cModel];
+        
+        index--;
+    }
+}
+
 #pragma mark - Class Function
 + (NSMutableArray *)fourOptionsWithStandard:(NSString *)standard source:(NSArray *)source {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:4];
@@ -195,7 +234,7 @@
                               from:0
                              count:1000
                         completion:^(NSDictionary *info) {
-                            [self appendDataWithInfo:info];
+                            [self appendPZBDataWithInfo:info];
                             
                             if (self.models.count == 0) {
                                 if (failure) {
@@ -221,7 +260,7 @@
                               from:self.models.count
                              count:1000
                         completion:^(NSDictionary *info) {
-                            [self appendDataWithInfo:info];
+                            [self appendPZBDataWithInfo:info];
                             
                             if (completion) {
                                 completion();
@@ -242,7 +281,7 @@
                                         from:0
                                        count:1000
                                   completion:^(NSDictionary *info) {
-                                      [self appendDataWithInfo:info];
+                                      [self appendPZBDataWithInfo:info];
                                       
                                       if (self.models.count == 0) {
                                           if (failure) {
@@ -269,7 +308,7 @@
                                         from:self.models.count
                                        count:1000
                                   completion:^(NSDictionary *info) {
-                                      [self appendDataWithInfo:info];
+                                      [self appendPZBDataWithInfo:info];
                                       
                                       if (completion) {
                                           completion();
