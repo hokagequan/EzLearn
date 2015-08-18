@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define KEY_SCHOOL_ID @"KEY_SCHOOL_ID"
+#define KEY_HIDE_INFO @"KEY_HIDE_INFO"
 
 @interface SettingMgr : NSObject
 
