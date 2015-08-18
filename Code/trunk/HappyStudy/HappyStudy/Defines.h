@@ -12,8 +12,8 @@
 typedef enum {
     StudyGameNon = 0,
     StudyGameZiMuBao,
-    StudyGameZiMuKuang,
     StudyGameZiMuChui,
+    StudyGameZiMuKuang,
     StudyGameTingYinShiZi,
     StudyGamePengPengShiZi,
     StudyGameShiZiChui,
