@@ -63,6 +63,6 @@ typedef enum {
 #define GAME_NUM 10
 #define GAME_INTERVAL 1
 
-#define EZLEARN_DEBUG
+//#define EZLEARN_DEBUG
 
 #endif

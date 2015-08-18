@@ -23,6 +23,8 @@ typedef enum {
 
 @property (nonatomic) CGFloat totalTime;
 @property (nonatomic) NSInteger life;
+@property (strong, nonatomic) NSTimer *timer;
+@property (nonatomic) CGFloat leftTime;
 
 - (void)appendDataWithInfo:(NSDictionary *)info;
 
@@ -45,5 +47,6 @@ typedef enum {
 - (void)clean;
 - (BOOL)decreaseScore;
 - (void)next;
+- (void)countingDown;
 
 @end

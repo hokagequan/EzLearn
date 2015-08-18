@@ -11,6 +11,10 @@
 #import "BHBModel.h"
 #import "SKNode+PlaySound.h"
 
+@interface ZuCiBaoScene()<AVSpeechSynthesizerDelegate>
+
+@end
+
 @implementation ZuCiBaoScene
 
 #pragma mark - Override
@@ -57,9 +61,12 @@
         }
     }
     
-    [self playCorrectFemaleSoundCompletion:^{
-    [GlobalUtil speakText:string];
-    }];
+    AVSpeechSynthesizer *synth = [GlobalUtil speakText:string];
+    synth.delegate = self;
+}
+
+- (void)speechSynthesizer:(nonnull AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(nonnull AVSpeechUtterance *)utterance {
+    [self playCorrectFemaleSound];
 }
 
 @end

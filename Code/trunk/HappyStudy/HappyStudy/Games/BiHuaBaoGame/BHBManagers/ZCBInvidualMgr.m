@@ -20,6 +20,18 @@
     return self;
 }
 
+- (void)countingDown {
+    self.leftTime--;
+    [self.gameScene refreshTime:self.leftTime];
+    
+    if (self.leftTime <= 0) {
+        [self.timer invalidate];
+        self.timer = nil;
+        
+        [self wrong];
+    }
+}
+
 - (BOOL)decreaseScore {
     [super decreaseScore];
     

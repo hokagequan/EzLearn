@@ -64,6 +64,8 @@ typedef enum {
 }
 
 - (void)willMoveFromView:(SKView *)view {
+    [self.myGameMgr gameEnd];
+    
     [super willMoveFromView:view];
 }
 

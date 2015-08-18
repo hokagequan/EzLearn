@@ -19,9 +19,6 @@
 
 @interface BHBMgr()
 
-@property (strong, nonatomic) NSTimer *timer;
-@property (nonatomic) CGFloat leftTime;
-
 @end
 
 @implementation BHBMgr
@@ -102,17 +99,7 @@
     }
 }
 
-- (void)countingDown {
-    self.leftTime--;
-    [self.gameScene refreshTime:self.leftTime];
-    
-    if (self.leftTime <= 0) {
-        [self.timer invalidate];
-        self.timer = nil;
-        
-        [self wrong];
-    }
-}
+- (void)countingDown {}
 
 - (void)clean {
     if (self.timer) {
