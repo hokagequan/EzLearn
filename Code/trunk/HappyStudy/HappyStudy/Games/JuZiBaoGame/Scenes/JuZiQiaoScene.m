@@ -19,7 +19,7 @@
 #define kLEAF @"LEAF"
 #define kFROG @"FROG"
 
-#define FALL_DOWN_STANDARD_TIME 1
+#define FALL_DOWN_STANDARD_TIME 3
 
 #define ZOOM_IN_SIZE CGSizeMake(131, 131. * 47 / 161)
 
@@ -133,21 +133,20 @@
                                                         iPhonePoint:CGPOINT_NON
                                                             offsetX:0
                                                             offsetY:-30];
-        if (DistanceBetweenPoints(leaf.position, attractPosition) <= 20) {
+        if (DistanceBetweenPoints(leaf.position, attractPosition) <= [UniversalUtil universalDelta:20]) {
             leaf.position = attractPosition;
-            
-            [self.myGameMgr loadAnswerWithIndex:[self.questionLeafs indexOfObject:leaf] add:YES];
-            
-            if (![self.myGameMgr.currentAnswers containsObject:@(-1)]) {
-                self.myGameMgr.stat |= JZQGameStatPrepareCheck;
+            if (leaf.locationIndex != -1) {
+                [self.myGameMgr loadAnswerWithIndex:-1 toLocation:leaf.locationIndex add:NO];
             }
+            leaf.locationIndex = i;
+            [self.myGameMgr loadAnswerWithIndex:[self.questionLeafs indexOfObject:leaf] toLocation:i add:YES];
             
             return;
         }
     }
     
     leaf.position = leaf.originalLocation;
-    [self.myGameMgr loadAnswerWithIndex:[self.questionLeafs indexOfObject:leaf] add:NO];
+    [self.myGameMgr loadAnswerWithIndex:[self.questionLeafs indexOfObject:leaf] toLocation:-1 add:NO];
 }
 
 - (void)buildWorld {
@@ -211,21 +210,29 @@
     [self.frog jump];
 }
 
-- (void)frogFallDown {
+- (void)frogFallDownWithLeafIndex:(NSInteger)index {
     [self playSound:@"jzb_frog_falldown.mp3" completion:nil];
     
     SKAction *frogMoveAction = [SKAction moveToY:[UniversalUtil universalDelta:-100]
                                         duration:[self fallDownDurationFromY:self.frog.position.y toY:[UniversalUtil universalDelta:-100]]];
-    SKAction *leafMoveAction = [SKAction moveToY:[UniversalUtil universalDelta:-100]
-                                        duration:[self fallDownDurationFromY:self.draggingLeaf.position.y toY:[UniversalUtil universalDelta:-100]]];
     
     [self.frog runAction:frogMoveAction completion:^{
-        self.frog.position = [self adjustFrogPositionWith:self.frogBasePosition];
+        CGPoint position = [UniversalUtil universaliPadPoint:self.frogBasePosition
+                                                 iPhonePoint:CGPOINT_NON
+                                                     offsetX:-20
+                                                     offsetY:0];
+        self.frog.position = [self adjustFrogPositionWith:position];
     }];
-    [self.draggingLeaf runAction:leafMoveAction
+    
+    if (index < self.questionLeafs.count) {
+        OptionLeaf *leaf = self.questionLeafs[index];
+        SKAction *leafMoveAction = [SKAction moveToY:[UniversalUtil universalDelta:-100]
+                                            duration:[self fallDownDurationFromY:leaf.position.y toY:[UniversalUtil universalDelta:-100]]];
+        [leaf runAction:leafMoveAction
                       completion:^{
                           [self addCharacters:self.curIndex];
                       }];
+}
 }
 
 - (void)frogStartWithRiverLayer:(SKNode *)riverLayer {
@@ -284,11 +291,10 @@
     
     for (int i = 0; i < self.questionLeafs.count; i++) {
         CGPoint position = [self leafPositionWithIndex:i];
-        position = [UniversalUtil universaliPadPoint:[self leafPositionWithIndex:i]
+        position = [UniversalUtil universaliPadPoint:position
                                          iPhonePoint:CGPOINT_NON
-                                             offsetX:0
+                                             offsetX:-10
                                              offsetY:-30];
-        
         NSValue *value = [NSValue valueWithCGPoint:position];
         [self.frog.allJumpPositions addObject:value];
     }
@@ -301,6 +307,12 @@
                                                  offsetY:0];
     [self.frog.allJumpPositions addObject:[NSValue valueWithCGPoint:position]];
     [self setFrogJumpTarget:self.frog.allJumpPositions.count - 1];
+}
+
+- (void)resetOptionLeafs {
+    for (OptionLeaf *leaf in self.questionLeafs) {
+        leaf.locationIndex = -1;
+    }
 }
 
 - (void)setFrogJumpTarget:(NSInteger)index {
@@ -333,7 +345,6 @@
                                              iPhonePoint:CGPOINT_NON
                                                  offsetX:-20
                                                  offsetY:0];
-    
     self.frog.position = [self adjustFrogPositionWith:position];
     
     JZQModel *model = self.myGameMgr.models[index];
@@ -411,6 +422,10 @@
     StepCell *newCell = (StepCell *)[self.indexController cellForItemAtIndexPath:currentIndex];
     [newCell.stepBtn setTitleColor:colorRGB(255, 0, 0, 1)
                           forState:UIControlStateNormal];
+}
+
+- (void)finishAll {
+    [super finishAll];
 }
 
 #pragma mark - Actions
@@ -525,6 +540,7 @@
         self.draggingLeaf = [OptionLeaf optionLeafWithNode:node];
     }
     else if ([name isEqualToString:kFROG]) {
+//        self.myGameMgr.stat |= JZQGameStatPrepareCheck;
     }
 }
 

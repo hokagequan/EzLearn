@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, JZQGameStat) {
 - (void)loadJuZiQiaoServerGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure;
 - (void)loadJuZiQiaoServerMoreGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure;
 
-- (void)loadAnswerWithIndex:(NSInteger)index add:(BOOL)add;
+- (void)loadAnswerWithIndex:(NSInteger)index toLocation:(NSInteger)location add:(BOOL)add;
 - (void)resetAnswers;
 
 @end

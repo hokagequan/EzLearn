@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, zPostion) {
 - (SKNode *)layerWith:(HSSWorldLayer)layerID;
 - (void)animationCorrect:(SKNode *)node;
 - (void)playSoundWrong;
-- (void)playSoundCorrect;
+- (void)playSoundCorrectCompletion:(void (^)())completion;
 - (void)expandIndexController;
 - (void)startFromBegain;
 - (void)finishAll;
@@ -63,5 +63,6 @@ typedef NS_ENUM(NSInteger, zPostion) {
 - (void)clickRight:(id)sender;
 - (void)loadGameMgr;
 - (void)gameOver;
+- (void)showAnswer:(NSString *)character completion:(void (^)())completion;
 
 @end

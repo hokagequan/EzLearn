@@ -10,6 +10,7 @@
 #import "LoadingScene.h"
 #import "GameSelectScene.h"
 #import "VersionSeletionScene.h"
+#import "InfoScene.h"
 #import "HSButtonSprite.h"
 #import "HttpReqMgr.h"
 #import "AccountMgr.h"
@@ -60,6 +61,10 @@
     [self buildUIComponents];
     [self startCharactersAction];
     [self spawnStarsZPosition:1];
+    
+    if (![[SettingMgr getValueForKey:KEY_HIDE_INFO] boolValue]) {
+        [self showInfo];
+    }
 }
 
 - (void)willMoveFromView:(SKView *)view {
@@ -250,6 +255,11 @@
     }];
     SKAction *waitAction = [SKAction waitForDuration:0.8];
     [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[changeAction, waitAction]]] withKey:@"ChangeCharacters"];
+}
+
+- (void)showInfo {
+    InfoScene *scene = [InfoScene sceneFromNib];
+    [scene showInView:self.view];
 }
 
 #pragma mark - Actions

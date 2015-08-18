@@ -22,6 +22,9 @@ typedef enum {
 @property (nonatomic) BHBGameStat stat;
 
 @property (nonatomic) CGFloat totalTime;
+@property (nonatomic) NSInteger life;
+@property (strong, nonatomic) NSTimer *timer;
+@property (nonatomic) CGFloat leftTime;
 
 - (void)appendDataWithInfo:(NSDictionary *)info;
 
@@ -42,5 +45,8 @@ typedef enum {
 - (void)correct;
 - (void)wrong;
 - (void)clean;
+- (BOOL)decreaseScore;
+- (void)next;
+- (void)countingDown;
 
 @end

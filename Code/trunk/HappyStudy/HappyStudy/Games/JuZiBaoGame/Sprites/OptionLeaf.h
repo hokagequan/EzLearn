@@ -12,6 +12,7 @@
 
 @property (nonatomic) CGPoint originalLocation;
 @property (nonatomic) BOOL isAnswer;
+@property (nonatomic) NSInteger locationIndex;
 
 + (instancetype)optionLeafWithNode:(SKNode *)node;
 

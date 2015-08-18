@@ -205,7 +205,7 @@
     }
 #ifdef EZLEARN_DEBUG
 #else
-    [self playSoundCorrect];
+    [self playSoundCorrectCompletion:nil];
 #endif
     [self animationCorrect:optionSp];
 }

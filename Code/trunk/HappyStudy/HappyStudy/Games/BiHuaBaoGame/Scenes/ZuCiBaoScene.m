@@ -9,6 +9,11 @@
 #import "ZuCiBaoScene.h"
 #import "ZCBMgr.h"
 #import "BHBModel.h"
+#import "SKNode+PlaySound.h"
+
+@interface ZuCiBaoScene()<AVSpeechSynthesizerDelegate>
+
+@end
 
 @implementation ZuCiBaoScene
 
@@ -56,7 +61,12 @@
         }
     }
     
-    [GlobalUtil speakText:string];
+    AVSpeechSynthesizer *synth = [GlobalUtil speakText:string];
+    synth.delegate = self;
+}
+
+- (void)speechSynthesizer:(nonnull AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(nonnull AVSpeechUtterance *)utterance {
+    [self playCorrectFemaleSound];
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ZuCiBaoIndividualScene.h"
-#import "ZCBMgr.h"
+#import "ZCBInvidualMgr.h"
 #import "BHBModel.h"
 
 @implementation ZuCiBaoIndividualScene
@@ -56,7 +56,7 @@
 }
 
 - (void)loadGameMgr {
-    self.myGameMgr = [[ZCBMgr alloc] init];
+    self.myGameMgr = [[ZCBInvidualMgr alloc] init];
     self.myGameMgr.gameScene = self;
 }
 
@@ -74,7 +74,9 @@
         }
     }
     
+    [self playCorrectFemaleSoundCompletion:^{
     [GlobalUtil speakText:string];
+    }];
 }
 
 @end

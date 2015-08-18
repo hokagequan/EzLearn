@@ -18,20 +18,6 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>字母筐</string>
-		<key>x</key>
-		<string>486</string>
-		<key>y</key>
-		<string>260</string>
-		<key>animal</key>
-		<string>HSOwl</string>
-		<key>animalX</key>
-		<string>390</string>
-		<key>animalY</key>
-		<string>273</string>
-	</dict>
-	<dict>
-		<key>title</key>
 		<string>字母锤</string>
 		<key>x</key>
 		<string>400</string>
@@ -43,6 +29,20 @@
 		<string>317</string>
 		<key>animalY</key>
 		<string>546</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>字母筐</string>
+		<key>x</key>
+		<string>486</string>
+		<key>y</key>
+		<string>260</string>
+		<key>animal</key>
+		<string>HSOwl</string>
+		<key>animalX</key>
+		<string>390</string>
+		<key>animalY</key>
+		<string>273</string>
 	</dict>
 	<dict>
 		<key>title</key>

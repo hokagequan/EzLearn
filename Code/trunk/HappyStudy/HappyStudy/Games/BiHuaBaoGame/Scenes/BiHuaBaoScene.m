@@ -64,6 +64,8 @@ typedef enum {
 }
 
 - (void)willMoveFromView:(SKView *)view {
+    [self.myGameMgr gameEnd];
+    
     [super willMoveFromView:view];
 }
 
@@ -225,7 +227,7 @@ typedef enum {
 #ifdef EZLEARN_DEBUG
 #else
     [self playSound:option.sound completion:^{
-        
+        [self performSelector:@selector(playCorrectFemaleSound) withObject:nil afterDelay:0.3];
     }];
 #endif
 }
@@ -407,7 +409,6 @@ typedef enum {
         
         if (card.isAnswer) {
             [self speakWithOptionIndex:index];
-            [self playCorrectFemaleSound];
             [self showCorrectCongratulations:CGPointMake(card.position.x, card.position.y + card.size.height / 2)
                                   completion:^{
                                       [self.myGameMgr correct];

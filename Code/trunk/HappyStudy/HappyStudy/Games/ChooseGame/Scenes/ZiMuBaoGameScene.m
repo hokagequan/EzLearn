@@ -150,6 +150,12 @@ typedef NS_ENUM(NSInteger, ButtonName) {
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [CGMgr loadLocalGameDataZiMuBaoShengMu];
+            
+            for (int i = 0; i < [CGMgr sharedInstance].models.count; i++) {
+                CGChooseModel *model = [CGMgr sharedInstance].models[i];
+                model.modelID = i;
+            }
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
                 
@@ -166,6 +172,12 @@ typedef NS_ENUM(NSInteger, ButtonName) {
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [CGMgr loadLocalGameDataZiMuBaoYunMu];
+            
+            for (int i = 0; i < [CGMgr sharedInstance].models.count; i++) {
+                CGChooseModel *model = [CGMgr sharedInstance].models[i];
+                model.modelID = i;
+            }
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
                 
@@ -182,6 +194,12 @@ typedef NS_ENUM(NSInteger, ButtonName) {
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [CGMgr loadLocalGameDataZiMuBaoZhengTi];
+            
+            for (int i = 0; i < [CGMgr sharedInstance].models.count; i++) {
+                CGChooseModel *model = [CGMgr sharedInstance].models[i];
+                model.modelID = i;
+            }
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [SVProgressHUD dismiss];
                 

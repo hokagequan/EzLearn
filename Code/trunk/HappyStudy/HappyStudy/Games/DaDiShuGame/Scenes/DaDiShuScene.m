@@ -265,6 +265,8 @@
 + (void)releaseSceneAssets {}
 
 - (void)addCharacters:(NSInteger)index {
+    [self.myGameMgr setReloadStat:YES];
+    [self.myGameMgr setStartStat];
     if (self.myGameMgr.models.count <= index) {
         return;
     }
@@ -302,6 +304,8 @@
                                                                               offsetX:-20
                                                                               offsetY:-22];
                                     card.alpha = 1.0;
+                                    
+                                    [self.myGameMgr setReloadStat:NO];
                                 }];
     }
 }
@@ -335,13 +339,6 @@
 
 - (void)finishAll {
     [super finishAll];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                    message:@"Finish All!"
-                                                   delegate:self 
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
 }
 
 #pragma mark - Actions
@@ -389,13 +386,6 @@
     else if ([GameMgr sharedInstance].gameGroup == GroupSchool) {
         GameSelectScene *scene = [[GameSelectScene alloc] initWithSize:self.size];
         [self.view presentScene:scene];
-    }
-}
-
-#pragma mark - AlertView
-- (void)alertView:(nonnull UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        [self clickBack:nil];
     }
 }
 

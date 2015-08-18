@@ -27,15 +27,30 @@
 }
 
 - (void)addFruit:(HSLabelSprite *)fruit {
+    // 添加水果在篮子两侧
+//    BOOL addToLeft = self.fruits.count == 0;
+//    CGPoint position = CGPointMake(-self.size.width / 2 - fruit.size.width / 2, -self.size.height / 2 + fruit.size.height / 2);
+//    
+//    if (!addToLeft) {
+//        position = CGPointMake(self.size.width / 2 + fruit.size.width / 2, -self.size.height / 2 + fruit.size.height / 2);
+//    }
+//    
+//    fruit.position = position;
+//    fruit.zPosition = 200;
+//    
+//    [self addChild:fruit];
+//    [self.fruits addObject:fruit];
+    
+    [fruit setScale:0.7];
     BOOL addToLeft = self.fruits.count == 0;
-    CGPoint position = CGPointMake(-self.size.width / 2 - fruit.size.width / 2, -self.size.height / 2 + fruit.size.height / 2);
+    CGPoint position = CGPointMake(-self.size.width / 2 + fruit.size.width * 2 / 3, [UniversalUtil universalDelta:20]);
     
     if (!addToLeft) {
-        position = CGPointMake(self.size.width / 2 + fruit.size.width / 2, -self.size.height / 2 + fruit.size.height / 2);
+        position = CGPointMake(self.size.width / 2 - fruit.size.width * 2 / 3, [UniversalUtil universalDelta:20]);
     }
     
     fruit.position = position;
-    fruit.zPosition = 200;
+    fruit.zPosition = 90;
     
     [self addChild:fruit];
     [self.fruits addObject:fruit];
@@ -47,6 +62,19 @@
     }
     
     [self.fruits removeAllObjects];
+}
+
+- (void)loadUIWithName:(NSString *)name {
+    SKSpriteNode *outter = [SKSpriteNode spriteNodeWithImageNamed:@"basket_outter"];
+    outter.zPosition = 100;
+    outter.name = name;
+    [self addChild:outter];
+
+    SKSpriteNode *inner = [SKSpriteNode spriteNodeWithImageNamed:@"basket_inner"];
+    inner.zPosition = 0;
+    inner.name = name;
+    inner.position = CGPointMake(0, inner.size.height + [UniversalUtil universalDelta:6]);
+    [self addChild:inner];
 }
 
 - (void)removeSingleFruit {

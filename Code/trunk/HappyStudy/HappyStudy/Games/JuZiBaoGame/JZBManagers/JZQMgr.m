@@ -52,7 +52,7 @@
         NSDictionary *dict = array[index];
         NSDictionary *group = dict[@"Question"];
         JZQModel *model = [[JZQModel alloc] init];
-        model.modelID = dict[@"QuestionID"];
+        model.modelID = dict[@"QuestionsID"];
         model.indexStr = [NSString stringWithFormat:@"%@", @(pos + 1 - i)];
         model.sentence = group[@"sentence"];
         
@@ -91,6 +91,11 @@
         [self.gameScene loadFrogJumpPositions];
         self.stat &= ~JZQGameStatPrepareCheck;
         self.stat |= JZQGameStatCheck;
+        if ([self isCorrect]) {
+            JZQModel *model = self.models[self.gameScene.curIndex];
+            AVSpeechSynthesizer *synth = [GlobalUtil speakText:model.sentence];
+            synth.delegate = self;
+        }
     }
     
     if (self.stat & JZQGameStatCheck) {
@@ -108,21 +113,40 @@
                     [self.gameScene frogJump];
                 }
                 else {
+                    JZQModel *model = self.models[self.gameScene.curIndex];
+                    NSMutableArray *options = [NSMutableArray array];
+                    for (JZQWord *option in model.words) {
+                        [options addObject:option.word];
+                    }
+                    [self wrong:model.modelID options:options];
                     [self.gameScene playWrongSound];
-                    [self.gameScene frogFallDown];
+                    [self.gameScene frogFallDownWithLeafIndex:self.gameScene.frog.curLocationIndex];
                     self.stat &= ~JZQGameStatCheck;
                 }
             }
         }
         else {
+            JZQModel *model = self.models[self.gameScene.curIndex];
+            NSMutableArray *options = [NSMutableArray array];
+            for (JZQWord *option in model.words) {
+                [options addObject:option.word];
+            }
+            [self correct:model.modelID options:options];
             [self.gameScene frogHappy];
             [self.gameScene playCorrectMaleSound];
             self.stat &= ~JZQGameStatCheck;
-            JZQModel *model = self.models[self.gameScene.curIndex];
-            AVSpeechSynthesizer *synth = [GlobalUtil speakText:model.sentence];
-            synth.delegate = self;
         }
     }
+}
+
+- (BOOL)isCorrect {
+    BOOL result = NO;
+
+    for (int i = 0; i < self.currentAnswers.count; i++) {
+        result = (i == [self.currentAnswers[i] intValue]);
+    }
+    
+    return result;
 }
 
 - (void)loadJuZiQiaoServerGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure {
@@ -130,7 +154,7 @@
         
     [HttpReqMgr requestGetGameData:[AccountMgr sharedInstance].user.name
                             gameID:StudyGameJuZiQiao
-                              from:0
+                              from:-1
                              count:1000
                         completion:^(NSDictionary *info) {
                             [self appendDataWithInfo:info];
@@ -170,18 +194,25 @@
                         }];
 }
 
-- (void)loadAnswerWithIndex:(NSInteger)index add:(BOOL)add {
+- (void)loadAnswerWithIndex:(NSInteger)index toLocation:(NSInteger)location add:(BOOL)add {
     if (index >= self.currentAnswers.count) {
         return;
     }
     
-    if (add) {
         JZQModel *model = self.models[self.gameScene.curIndex];
         JZQWord *word = model.words[index];
-        self.currentAnswers[index] = @(word.index);
+    if (add) {
+        self.currentAnswers[location] = @(word.index);
     }
     else {
-        self.currentAnswers[index] = @(-1);
+        if ([self.currentAnswers containsObject:@(word.index)]) {
+            NSInteger theLocation = [self.currentAnswers indexOfObject:@(word.index)];
+            self.currentAnswers[theLocation] = @(-1);
+        }
+    }
+    
+    if (![self.currentAnswers containsObject:@(-1)]) {
+        self.stat |= JZQGameStatPrepareCheck;
     }
 }
 

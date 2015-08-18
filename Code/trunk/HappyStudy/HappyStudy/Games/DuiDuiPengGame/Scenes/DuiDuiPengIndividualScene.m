@@ -14,8 +14,6 @@
 
 - (void)didMoveToView:(nonnull SKView *)view {
     [super didMoveToView:view];
-    
-    self.uikitContainer.userInteractionEnabled = NO;
 }
 
 #pragma mark - Override

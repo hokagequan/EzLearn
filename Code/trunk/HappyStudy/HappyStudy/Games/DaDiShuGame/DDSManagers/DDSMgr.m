@@ -15,8 +15,8 @@
 #import "DaDiShuScene.h"
 
 #define MAX_WRONG_TIMES         3
-#define ORIGINAL_STAY_TIME      3.0
-#define MIN_STAY_TIME           2.0
+#define ORIGINAL_STAY_TIME      2.5
+#define MIN_STAY_TIME           1.8
 
 typedef enum {
     GameStatStart = 1,
@@ -166,10 +166,11 @@ typedef enum {
 - (void)gameLogic:(CFTimeInterval)interval {
     if (!(self.stat & GameStatStart) || self.stat & GameStatReloadStat) {
         self.showTime = interval;
-        self.stat &= ~GameStatReloadStat;
     }
     
     if (interval - self.showTime >= self.stayTime) {
+        self.stat |= GameStatReloadStat;
+        
         self.showTime = interval;
         self.missTimes++;
         
@@ -186,6 +187,7 @@ typedef enum {
             }
         }
         else {
+            self.stat &= ~GameStatReloadStat;
             [self.gameScene addCharacters:self.gameScene.curIndex];
         }
     }
@@ -193,11 +195,12 @@ typedef enum {
 
 - (void)goNext {
     self.gameScene.userInteractionEnabled = YES;
-    self.stayTime = [self caculateStayTimeWith:self.gameScene.curIndex];
     [self performSelector:@selector(next) withObject:nil afterDelay:GAME_INTERVAL];
 }
 
 - (void)next {
+    self.stayTime = [self caculateStayTimeWith:self.gameScene.curIndex];
+    self.stat &= ~GameStatReloadStat;
     [self.gameScene next];
 }
 
@@ -207,11 +210,25 @@ typedef enum {
 
 - (void)reShow {
     self.stayTime = [self caculateStayTimeWith:self.gameScene.curIndex];
+    self.stat &= ~GameStatReloadStat;
     [self.gameScene addCharacters:self.gameScene.curIndex];
 }
 
+- (void)setStartStat {
+    self.stat |= GameStatStart;
+}
+
+- (void)setReloadStat:(BOOL)reload {
+    if (reload) {
+        self.stat |= GameStatReloadStat;
+    }
+    else {
+        self.stat &= ~GameStatReloadStat;
+    }
+}
+
 - (void)wrong {
-    [self.gameScene playWrongSound];
+    [self.gameScene playBallonWrongSound];
     
     self.clickCount++;
     DDSModel *model = self.models[self.gameScene.curIndex];

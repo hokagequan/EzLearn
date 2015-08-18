@@ -41,6 +41,8 @@
 - (BOOL)decreaseScore;
 - (void)goNext;
 - (void)correct;
+- (void)setReloadStat:(BOOL)reload;
+- (void)setStartStat;
 
 - (BOOL)isGameEnd;
 

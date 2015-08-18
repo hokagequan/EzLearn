@@ -19,9 +19,6 @@
 
 @interface BHBMgr()
 
-@property (strong, nonatomic) NSTimer *timer;
-@property (nonatomic) CGFloat leftTime;
-
 @end
 
 @implementation BHBMgr
@@ -39,6 +36,9 @@
     NSMutableArray *models = self.models;
     
     self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
+    if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
+        self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+    }
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
     self.curGroupCount = pos - array.count + 1;
     
@@ -81,7 +81,9 @@
     [self correct:model.modelID options:options];
     
     self.score++;
+    self.life++;
     [self.gameScene refreshScore:self.score];
+    [self.gameScene changeLifeWith:self.life];
     if (self.gameScene.curIndex == self.models.count - 1) {
         if (self.maxGroupNum != self.models.count) {
             [self.gameScene clickRight:nil];
@@ -97,17 +99,7 @@
     }
 }
 
-- (void)countingDown {
-    self.leftTime--;
-    [self.gameScene refreshTime:self.leftTime];
-    
-    if (self.leftTime <= 0) {
-        [self.timer invalidate];
-        self.timer = nil;
-        
-        [self wrong];
-    }
-}
+- (void)countingDown {}
 
 - (void)clean {
     if (self.timer) {
@@ -116,16 +108,26 @@
     }
 }
 
-- (void)decreaseScore {
+- (BOOL)decreaseScore {
+    self.life--;
+    if (self.life < 0) {
+        self.life = 0;
+    }
+    
+    [self.gameScene changeLifeWith:self.life];
+    
     self.score--;
     if (self.score < 0) {
         self.score = 0;
     }
+    
+    return NO;
 }
 
 - (void)gameStart {
     self.leftTime = self.totalTime;
     self.stat = BHBGameStatStart;
+    self.life = MAX_LIFE;
     [self.gameScene refreshTime:self.leftTime];
     
     if (self.timer) {

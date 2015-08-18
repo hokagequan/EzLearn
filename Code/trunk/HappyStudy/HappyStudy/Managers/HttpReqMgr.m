@@ -95,8 +95,8 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"StudentID"] = userName;
     params[@"GameID"] = [NSString stringWithFormat:@"%@", @(game - 1)];
-    params[@"QuizID"] = theID;
     params[@"SpentTime"] = [NSString stringWithFormat:@"%@", @(second)];
+    params[@"QuestionID"] = theID;
     
     NSInteger year, month, day, hour, min, sec;
     [[NSDate date] year:&year
@@ -114,6 +114,7 @@
     
     if (!isIndividual) {
         method = @"submitlogs";
+        params[@"QuizID"] = theID;
     }
     
     [[HttpReqMgr sharedInstance] requestWithMethod:method

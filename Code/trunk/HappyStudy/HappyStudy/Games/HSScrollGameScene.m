@@ -19,8 +19,6 @@
 @property (strong, nonatomic) NSMutableArray *layers;
 @property (nonatomic) BOOL worldMovedForUpdate;
 
-@property (strong, nonatomic) NSDate *beginDate;
-
 @end
 
 @implementation HSScrollGameScene
@@ -45,8 +43,6 @@
 - (void)didMoveToView:(SKView *)view {
     [super didMoveToView:view];
     
-    self.beginDate = [NSDate date];
-    
     [self addIndexController];
     [self.gameMgr resetGameAnalyze];
     [self.gameMgr resetSignleQuestionAnalyze];
@@ -62,7 +58,6 @@
 }
 
 - (void)willMoveFromView:(SKView *)view {
-    [AccountMgr sharedInstance].user.playTime += [[NSDate date] timeIntervalSinceDate:self.beginDate];
     [self clearIndexController];
     [self removeObserver:self forKeyPath:@"curIndex"];
     [self removeObserver:self forKeyPath:@"worldMovedForUpdate"];
@@ -223,8 +218,12 @@
     [self runAction:[SKAction playSoundFileNamed:@"answer_wrong.wav" waitForCompletion:NO]];
 }
 
-- (void)playSoundCorrect {
-    [self runAction:[SKAction playSoundFileNamed:@"correct.wav" waitForCompletion:NO]];
+- (void)playSoundCorrectCompletion:(void (^)())completion {
+    [self runAction:[SKAction playSoundFileNamed:@"correct.wav" waitForCompletion:NO] completion:^{
+        if (completion) {
+            completion();
+        }
+    }];
 }
 
 - (void)refreshScore:(NSInteger)score {
@@ -245,6 +244,28 @@
 
 - (void)showMask:(BOOL)show {
     self.uikitContainer.hidden = show;
+}
+
+- (void)showAnswer:(NSString *)character completion:(void (^)())completion {
+    SKLabelNode *answerLable = [SKLabelNode labelNodeWithFontNamed:FONT_NAME_HP];
+    answerLable.text = character;
+    answerLable.fontColor = [UIColor redColor];
+    answerLable.fontName = FONT_NAME_HP;
+    answerLable.fontSize = 100;
+    answerLable.zPosition = 1000;
+    answerLable.position = CGPointMake(self.size.width / 2, self.size.height / 2);
+    [self addNode:answerLable atWorldLayer:HSSWorldLayerCharacter];
+    
+    SKAction *wait = [SKAction waitForDuration:1];
+    SKAction *done = [SKAction runBlock:^{
+        [answerLable removeFromParent];
+        
+        if (completion) {
+            completion();
+        }
+    }];
+    
+    [answerLable runAction:[SKAction sequence:@[wait, done]]];
 }
 
 - (void)refreshCurrentItem {

@@ -11,7 +11,7 @@
 #import "HSLabelSprite.h"
 
 #define ORIGINAL_DROPPING_TIME 3.4
-#define MIN_DROPPING_TIME 1.5
+#define MIN_DROPPING_TIME 1.0
 
 @class ZiMuKuangScene;
 
@@ -56,5 +56,7 @@ typedef enum {
 - (void)wrong;
 - (void)goNext;
 - (CGFloat)caculateStayTimeWith:(NSInteger)index;
+- (BOOL)isCurrentFruitCorrect;
+- (CGFloat)deltaYZero;
 
 @end

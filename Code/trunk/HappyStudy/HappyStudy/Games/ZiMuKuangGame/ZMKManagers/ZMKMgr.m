@@ -41,18 +41,18 @@
         NSDictionary *group = dict[@"Question"];
         ZMKModel *model = [[ZMKModel alloc] init];
         model.modelID = dict[@"QuestionsID"];
-        model.indexStr = [NSString stringWithFormat:@"%@", @(pos + 1 + i)];
+        model.indexStr = [NSString stringWithFormat:@"%@", group[@"pinyin"]];
         ZMKQuestion *qModel = [[ZMKQuestion alloc] init];
-        qModel.title = group[@"part"];
+        qModel.title = group[@"pinyin"];
+        qModel.sound = group[@"audio_path"];
         model.question = qModel;
         
-        NSArray *options = group[@"choices"];
+        NSArray *options = @[group[@"choiceA"], group[@"choiceB"], group[@"choiceC"], group[@"choiceD"]];
+        NSInteger answer = [group[@"answer"] integerValue];
         for (int j = 0; j < options.count; j++) {
-            NSDictionary *detail = options[j];
             ZMKOption *option = [[ZMKOption alloc] init];
-            option.title = detail[@"part"];
-            option.sound = detail[@"audio_path"];
-            option.isAnswer = [detail[@"correct"] boolValue];
+            option.title = options[j];
+            option.isAnswer = (j + 1) == answer;
             
             [model.options addObject:option];
         }
@@ -112,6 +112,14 @@
     return nil;
 }
 
+- (CGFloat)deltaYZero {
+    return 0.0;
+}
+
+- (BOOL)isCurrentFruitCorrect {
+    return [self.gameScene.fruit.label.text isEqualToString:self.gameScene.basket.label.text];
+}
+
 - (void)gameStart {
     self.stat = ZMKGameStatStart;
     
@@ -133,10 +141,14 @@
             self.basketFruitNumber = 0;
             if (self.gameScene.curIndex == self.models.count - 1) {
                 if (self.maxGroupNum != self.models.count) {
+                    [self.gameScene cleanBasketFruits];
+                    [self.gameScene resetFruit];
                     [self.gameScene clickRight:nil];
                 }
                 else {
                     [self gameEnd];
+                    [self.gameScene cleanBasketFruits];
+                    [self.gameScene resetFruit];
                     [self.gameScene finishAll];
                 }
             }
@@ -168,9 +180,21 @@
             }
         }
     }
+    else if ([self.gameScene.fruit.name isEqualToString:@"new"]) {
+        if ([self isCurrentFruitCorrect] &&
+            self.gameScene.fruit.position.y <= self.gameScene.fruit.size.height + [self deltaYZero]) {
+            self.gameScene.fruit.name = @"old";
+            SKAction *zoomOut = [SKAction scaleTo:1.5 duration:0.3];
+            SKAction *zoomIn = [SKAction scaleTo:1.0 duration:0.3];
+            [self.gameScene.fruit runAction:[SKAction sequence:@[zoomOut, zoomIn]]];
+            
+            [self wrong];
+        }
+    }
 }
 
 - (void)goNext {
+    self.gameScene.userInteractionEnabled = YES;
     [self.gameScene cleanBasketFruits];
     [self.gameScene next];
     self.isTransition = NO;

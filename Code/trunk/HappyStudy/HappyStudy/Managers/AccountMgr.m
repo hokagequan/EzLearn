@@ -45,7 +45,7 @@
                                   Award *award = [[Award alloc] init];
                                   award.identifier = detail[0];
                                   award.detail = detail[1];
-                                  award.picUrl = detail[2];
+                              award.picUrl = [NSString stringWithFormat:@"%@", detail[2]];
                                   award.credits = detail[3];
                                   award.redeemable = [detail[4] boolValue];
                                   [self.awards addObject:award];
@@ -69,7 +69,7 @@
                                  Task *task = [[Task alloc] init];
                                  task.identifier = detail[0];
                                  task.detail = detail[1];
-                                 task.picUrl = detail[2];
+                             task.picUrl = [NSString stringWithFormat:@"%@", detail[2]];
                                  task.redeemable = [detail[3] boolValue];
                                  [self.tasks addObject:task];
                              }

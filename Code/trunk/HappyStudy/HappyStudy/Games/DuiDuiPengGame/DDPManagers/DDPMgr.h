@@ -12,6 +12,8 @@
 
 + (instancetype)sharedInstance;
 
+- (void)appendDataWithInfo:(NSDictionary *)info;
+
 // 碰碰识字
 - (void)loadPengPengShiZiIndividualServerGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure;
 - (void)loadPengPengShiZiIndividualServerMoreGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure;

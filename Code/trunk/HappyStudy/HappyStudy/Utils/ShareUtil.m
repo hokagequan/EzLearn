@@ -11,14 +11,25 @@
 
 #import <Social/Social.h>
 #import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
 
 @interface ShareUtil() {
     void(^shareCompletion)(BOOL success);
 }
 
+@property (strong, nonatomic) TencentOAuth *tencentAuth;
+
 @end
 
 @implementation ShareUtil
+
+- (instancetype)init {
+    if (self = [super init]) {
+        self.tencentAuth = [[TencentOAuth alloc] initWithAppId:QQ_APP_ID andDelegate:nil];
+    }
+    
+    return self;
+}
 
 - (void)handleSendResult:(QQApiSendResultCode)sendResult
 {
@@ -116,7 +127,9 @@
 }
 
 - (void)shareToWeixin:(NSString *)text image:(UIImage *)image url:(NSURL *)url {
+    if (url || image) {
     WXMediaMessage *wxmessage = [WXMediaMessage message];
+        wxmessage.title = @"Ez-Learn";
     if (text) {
         wxmessage.description = text;
     }
@@ -141,6 +154,14 @@
     
     [WXApi sendReq:req];
 }
+    else {
+        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+        req.text = text;
+        req.bText = YES;
+        req.scene = WXSceneTimeline;
+        [WXApi sendReq:req];
+    }
+}
 
 - (void)shareToQQ:(NSString *)text image:(UIImage *)image url:(NSURL *)url {
     SendMessageToQQReq* req = nil;
@@ -164,6 +185,9 @@
         QQApiTextObject *textObj = [QQApiTextObject objectWithText:text];
         req = [SendMessageToQQReq reqWithContent:textObj];
     }
+    
+//    QQApiNewsObject *obj = [QQApiNewsObject objectWithURL:url title:@"Ez-Learn" description:text previewImageData:UIImageJPEGRepresentation(image, 1)];
+//    req = [SendMessageToQQReq reqWithContent:obj];
     
     if (req) {
         QQApiSendResultCode sent = [QQApiInterface sendReq:req];
@@ -201,5 +225,13 @@
             break;
     }
 }
+#pragma mark - Property
+//- (TencentOAuth *)tencentAuth {
+//    if (!_tencentAuth) {
+//        _tencentAuth = [[TencentOAuth alloc] initWithAppId:QQ_APP_ID andDelegate:nil];
+//    }
+//    
+//    return _tencentAuth;
+//}
 
 @end

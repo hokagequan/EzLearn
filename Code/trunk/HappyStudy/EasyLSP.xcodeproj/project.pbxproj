@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100564141B8167F8000E6781 /* basket_inner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 100564101B8167F8000E6781 /* basket_inner@2x.png */; };
+		100564151B8167F8000E6781 /* basket_inner@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 100564111B8167F8000E6781 /* basket_inner@2x~ipad.png */; };
+		100564161B8167F8000E6781 /* basket_outter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 100564121B8167F8000E6781 /* basket_outter@2x.png */; };
+		100564171B8167F8000E6781 /* basket_outter@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 100564131B8167F8000E6781 /* basket_outter@2x~ipad.png */; };
 		10064AF019FBE35800D77A7A /* GlobalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 10064AEF19FBE35800D77A7A /* GlobalUtil.m */; };
 		10064AF319FC976100D77A7A /* HSCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10064AF219FC976100D77A7A /* HSCharacter.m */; };
 		10098B6F1B51545F0082FC8B /* ei1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 10098B6D1B51545F0082FC8B /* ei1.mp3 */; };
@@ -18,6 +22,18 @@
 		1060B9981A1C9A0C00DD409C /* SettingMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 1060B9971A1C9A0C00DD409C /* SettingMgr.m */; };
 		1060B9A51A1D929900DD409C /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1060B9A21A1D929900DD409C /* SVProgressHUD.bundle */; };
 		1060B9A61A1D929900DD409C /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1060B9A41A1D929900DD409C /* SVProgressHUD.m */; };
+		10625CD81B8177E600022C80 /* BHBInvidualMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 10625CD71B8177E600022C80 /* BHBInvidualMgr.m */; };
+		10625CDB1B81891D00022C80 /* ZCBInvidualMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 10625CDA1B81891D00022C80 /* ZCBInvidualMgr.m */; };
+		10625CDE1B82B35A00022C80 /* InfoScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 10625CDD1B82B35A00022C80 /* InfoScene.m */; };
+		10625CE01B82B38000022C80 /* InfoScene.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10625CDF1B82B38000022C80 /* InfoScene.xib */; };
+		1062B36E1B82FF1D00582525 /* checkbox_uncheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1062B36A1B82FF1D00582525 /* checkbox_uncheck@2x.png */; };
+		1062B36F1B82FF1D00582525 /* checkbox_uncheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 1062B36B1B82FF1D00582525 /* checkbox_uncheck.png */; };
+		1062B3701B82FF1D00582525 /* checkbox_uncheck~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1062B36C1B82FF1D00582525 /* checkbox_uncheck~ipad.png */; };
+		1062B3711B82FF1D00582525 /* checkbox_uncheck@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1062B36D1B82FF1D00582525 /* checkbox_uncheck@2x~ipad.png */; };
+		1062B3761B83002900582525 /* checkbox_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 1062B3721B83002900582525 /* checkbox_check.png */; };
+		1062B3771B83002900582525 /* checkbox_check@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1062B3731B83002900582525 /* checkbox_check@2x~ipad.png */; };
+		1062B3781B83002900582525 /* checkbox_check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1062B3741B83002900582525 /* checkbox_check@2x.png */; };
+		1062B3791B83002900582525 /* checkbox_check~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 1062B3751B83002900582525 /* checkbox_check~ipad.png */; };
 		107868F91B305BC1006C7868 /* PZKIndividualMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 107868F81B305BC1006C7868 /* PZKIndividualMgr.m */; };
 		107868FC1B305F59006C7868 /* SKNode+PlaySound.m in Sources */ = {isa = PBXBuildFile; fileRef = 107868FB1B305F59006C7868 /* SKNode+PlaySound.m */; };
 		107868FF1B306300006C7868 /* PZCMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 107868FE1B306300006C7868 /* PZCMgr.m */; };
@@ -1702,6 +1718,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		100564101B8167F8000E6781 /* basket_inner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basket_inner@2x.png"; sourceTree = "<group>"; };
+		100564111B8167F8000E6781 /* basket_inner@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basket_inner@2x~ipad.png"; sourceTree = "<group>"; };
+		100564121B8167F8000E6781 /* basket_outter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basket_outter@2x.png"; sourceTree = "<group>"; };
+		100564131B8167F8000E6781 /* basket_outter@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basket_outter@2x~ipad.png"; sourceTree = "<group>"; };
 		10064AEE19FBE35800D77A7A /* GlobalUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalUtil.h; path = Utils/GlobalUtil.h; sourceTree = "<group>"; };
 		10064AEF19FBE35800D77A7A /* GlobalUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalUtil.m; path = Utils/GlobalUtil.m; sourceTree = "<group>"; };
 		10064AF119FC976100D77A7A /* HSCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HSCharacter.h; path = Sprites/HSCharacter.h; sourceTree = "<group>"; };
@@ -1720,6 +1740,21 @@
 		1060B9A21A1D929900DD409C /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		1060B9A31A1D929900DD409C /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		1060B9A41A1D929900DD409C /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		10625CD61B8177E600022C80 /* BHBInvidualMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHBInvidualMgr.h; sourceTree = "<group>"; };
+		10625CD71B8177E600022C80 /* BHBInvidualMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHBInvidualMgr.m; sourceTree = "<group>"; };
+		10625CD91B81891D00022C80 /* ZCBInvidualMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCBInvidualMgr.h; sourceTree = "<group>"; };
+		10625CDA1B81891D00022C80 /* ZCBInvidualMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCBInvidualMgr.m; sourceTree = "<group>"; };
+		10625CDC1B82B35A00022C80 /* InfoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfoScene.h; path = MainScenes/InfoScene.h; sourceTree = "<group>"; };
+		10625CDD1B82B35A00022C80 /* InfoScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfoScene.m; path = MainScenes/InfoScene.m; sourceTree = "<group>"; };
+		10625CDF1B82B38000022C80 /* InfoScene.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InfoScene.xib; path = MainScenes/InfoScene.xib; sourceTree = "<group>"; };
+		1062B36A1B82FF1D00582525 /* checkbox_uncheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_uncheck@2x.png"; sourceTree = "<group>"; };
+		1062B36B1B82FF1D00582525 /* checkbox_uncheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_uncheck.png; sourceTree = "<group>"; };
+		1062B36C1B82FF1D00582525 /* checkbox_uncheck~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_uncheck~ipad.png"; sourceTree = "<group>"; };
+		1062B36D1B82FF1D00582525 /* checkbox_uncheck@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_uncheck@2x~ipad.png"; sourceTree = "<group>"; };
+		1062B3721B83002900582525 /* checkbox_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_check.png; sourceTree = "<group>"; };
+		1062B3731B83002900582525 /* checkbox_check@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_check@2x~ipad.png"; sourceTree = "<group>"; };
+		1062B3741B83002900582525 /* checkbox_check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_check@2x.png"; sourceTree = "<group>"; };
+		1062B3751B83002900582525 /* checkbox_check~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_check~ipad.png"; sourceTree = "<group>"; };
 		107868F71B305BC1006C7868 /* PZKIndividualMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZKIndividualMgr.h; sourceTree = "<group>"; };
 		107868F81B305BC1006C7868 /* PZKIndividualMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZKIndividualMgr.m; sourceTree = "<group>"; };
 		107868FA1B305F59006C7868 /* SKNode+PlaySound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKNode+PlaySound.h"; path = "Customs/SKNode+PlaySound.h"; sourceTree = "<group>"; };
@@ -4406,6 +4441,9 @@
 				10D4CEA81B1FD89500755ED3 /* CupCell.h */,
 				10D4CEA91B1FD89500755ED3 /* CupCell.m */,
 				10D4CEAA1B1FD89500755ED3 /* CupCell.xib */,
+				10625CDC1B82B35A00022C80 /* InfoScene.h */,
+				10625CDD1B82B35A00022C80 /* InfoScene.m */,
+				10625CDF1B82B38000022C80 /* InfoScene.xib */,
 			);
 			name = MainScenes;
 			sourceTree = "<group>";
@@ -4452,6 +4490,18 @@
 		10D1FD6D19F8AD9800CA44E4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1062B3721B83002900582525 /* checkbox_check.png */,
+				1062B3731B83002900582525 /* checkbox_check@2x~ipad.png */,
+				1062B3741B83002900582525 /* checkbox_check@2x.png */,
+				1062B3751B83002900582525 /* checkbox_check~ipad.png */,
+				1062B36A1B82FF1D00582525 /* checkbox_uncheck@2x.png */,
+				1062B36B1B82FF1D00582525 /* checkbox_uncheck.png */,
+				1062B36C1B82FF1D00582525 /* checkbox_uncheck~ipad.png */,
+				1062B36D1B82FF1D00582525 /* checkbox_uncheck@2x~ipad.png */,
+				100564101B8167F8000E6781 /* basket_inner@2x.png */,
+				100564111B8167F8000E6781 /* basket_inner@2x~ipad.png */,
+				100564121B8167F8000E6781 /* basket_outter@2x.png */,
+				100564131B8167F8000E6781 /* basket_outter@2x~ipad.png */,
 				10A636761B3D409E0094E23E /* about_bg@2x.png */,
 				10A636771B3D409E0094E23E /* about_bg@2x~ipad.png */,
 				10A636781B3D409E0094E23E /* about_btn_nor@2x.png */,
@@ -6453,6 +6503,10 @@
 				10F52E1A1B01E77100BF9156 /* BHBMgr.m */,
 				10E36F631B39056900C1D01B /* ZCBMgr.h */,
 				10E36F641B39056900C1D01B /* ZCBMgr.m */,
+				10625CD61B8177E600022C80 /* BHBInvidualMgr.h */,
+				10625CD71B8177E600022C80 /* BHBInvidualMgr.m */,
+				10625CD91B81891D00022C80 /* ZCBInvidualMgr.h */,
+				10625CDA1B81891D00022C80 /* ZCBInvidualMgr.m */,
 			);
 			path = BHBManagers;
 			sourceTree = "<group>";
@@ -6630,6 +6684,7 @@
 				10A637A01B3D409F0094E23E /* point_bg@2x.png in Resources */,
 				10D1048519FDC70F00CA44E4 /* mai2.mp3 in Resources */,
 				10D1033C19FDC70F00CA44E4 /* e1.mp3 in Resources */,
+				1062B3781B83002900582525 /* checkbox_check@2x.png in Resources */,
 				10A637B31B3D409F0094E23E /* sign_btn_sel@2x~ipad.png in Resources */,
 				10D1067C19FDC70F00CA44E4 /* yi2.mp3 in Resources */,
 				10D1057D19FDC70F00CA44E4 /* san4.mp3 in Resources */,
@@ -6641,6 +6696,7 @@
 				10D1044919FDC70F00CA44E4 /* leng4.mp3 in Resources */,
 				10D1025619FDC70F00CA44E4 /* ao3.mp3 in Resources */,
 				10A6358C1B3D2A020094E23E /* BHBCrab.atlas in Resources */,
+				100564171B8167F8000E6781 /* basket_outter@2x~ipad.png in Resources */,
 				10D1026C19FDC70F00CA44E4 /* bei1.mp3 in Resources */,
 				10D102A619FDC70F00CA44E4 /* cha3.mp3 in Resources */,
 				10D103AE19FDC70F00CA44E4 /* hong1.mp3 in Resources */,
@@ -6651,6 +6707,7 @@
 				10D1029219FDC70F00CA44E4 /* cai2.mp3 in Resources */,
 				10D1026919FDC70F00CA44E4 /* bao3.mp3 in Resources */,
 				10D1057B19FDC70F00CA44E4 /* san1.mp3 in Resources */,
+				1062B36F1B82FF1D00582525 /* checkbox_uncheck.png in Resources */,
 				109FB53D1B61C7D500F37C03 /* correct_female9.mp3 in Resources */,
 				10D1029D19FDC70F00CA44E4 /* cao3.mp3 in Resources */,
 				10A635BA1B3D2A020094E23E /* Card_Blue_Idle-iphone.atlas in Resources */,
@@ -6977,6 +7034,7 @@
 				10D1068C19FDC70F00CA44E4 /* yong4.mp3 in Resources */,
 				10D103BA19FDC70F00CA44E4 /* hua1.mp3 in Resources */,
 				10D104FC19FDC70F00CA44E4 /* pang1.mp3 in Resources */,
+				1062B3761B83002900582525 /* checkbox_check.png in Resources */,
 				10D106FA19FDC70F00CA44E4 /* zong4.mp3 in Resources */,
 				10D1057019FDC70F00CA44E4 /* ru3.mp3 in Resources */,
 				10D1065B19FDC70F00CA44E4 /* xuan1.mp3 in Resources */,
@@ -7053,6 +7111,7 @@
 				10D104C819FDC70F00CA44E4 /* ne0.mp3 in Resources */,
 				10D103AD19FDC70F00CA44E4 /* heng4.mp3 in Resources */,
 				10D104FD19FDC70F00CA44E4 /* pang2.mp3 in Resources */,
+				1062B36E1B82FF1D00582525 /* checkbox_uncheck@2x.png in Resources */,
 				10D1061519FDC70F00CA44E4 /* wa0.mp3 in Resources */,
 				10D1055B19FDC70F00CA44E4 /* ran2.mp3 in Resources */,
 				10D1040319FDC70F00CA44E4 /* kai4.mp3 in Resources */,
@@ -7095,6 +7154,7 @@
 				10D1070519FDC70F00CA44E4 /* zui4.mp3 in Resources */,
 				10D1059219FDC70F00CA44E4 /* shang4.mp3 in Resources */,
 				10D1032919FDC70F00CA44E4 /* dou1.mp3 in Resources */,
+				100564151B8167F8000E6781 /* basket_inner@2x~ipad.png in Resources */,
 				10D1041C19FDC70F00CA44E4 /* kua4.mp3 in Resources */,
 				10D1032F19FDC70F00CA44E4 /* du4.mp3 in Resources */,
 				10D1052019FDC70F00CA44E4 /* po1.mp3 in Resources */,
@@ -7141,6 +7201,7 @@
 				10D102C219FDC70F00CA44E4 /* cheng4.mp3 in Resources */,
 				10D1060519FDC70F00CA44E4 /* tu3.mp3 in Resources */,
 				10D102A819FDC70F00CA44E4 /* chai1.mp3 in Resources */,
+				1062B3701B82FF1D00582525 /* checkbox_uncheck~ipad.png in Resources */,
 				10D1028219FDC70F00CA44E4 /* bie4.mp3 in Resources */,
 				10D1027B19FDC70F00CA44E4 /* bian4.mp3 in Resources */,
 				10D105CD19FDC70F00CA44E4 /* sui2.mp3 in Resources */,
@@ -7426,6 +7487,7 @@
 				10A6372D1B3D409F0094E23E /* about_btn_sel@2x~ipad.png in Resources */,
 				10D1048B19FDC70F00CA44E4 /* man4.mp3 in Resources */,
 				10D1035C19FDC70F00CA44E4 /* feng4.mp3 in Resources */,
+				100564161B8167F8000E6781 /* basket_outter@2x.png in Resources */,
 				10A637701B3D409F0094E23E /* fort@2x.png in Resources */,
 				10D1069519FDC70F00CA44E4 /* yuan1.mp3 in Resources */,
 				10D106BA19FDC70F00CA44E4 /* zhai1.mp3 in Resources */,
@@ -7447,6 +7509,7 @@
 				10A635981B3D2A020094E23E /* Owl_Idle.atlas in Resources */,
 				10D1061B19FDC70F00CA44E4 /* wai4.mp3 in Resources */,
 				10D102D019FDC70F00CA44E4 /* chu2.mp3 in Resources */,
+				10625CE01B82B38000022C80 /* InfoScene.xib in Resources */,
 				10D1053619FDC70F00CA44E4 /* qiang1.mp3 in Resources */,
 				10D1039219FDC70F00CA44E4 /* guo2.mp3 in Resources */,
 				10D105B319FDC70F00CA44E4 /* shuan1.mp3 in Resources */,
@@ -7461,6 +7524,7 @@
 				10D1038F19FDC70F00CA44E4 /* gun3.mp3 in Resources */,
 				10D104AD19FDC70F00CA44E4 /* ming3.mp3 in Resources */,
 				10D105E519FDC70F00CA44E4 /* tao3.mp3 in Resources */,
+				1062B3771B83002900582525 /* checkbox_check@2x~ipad.png in Resources */,
 				10D1069319FDC70F00CA44E4 /* yu3.mp3 in Resources */,
 				10D1027719FDC70F00CA44E4 /* bi3.mp3 in Resources */,
 				10D1026519FDC70F00CA44E4 /* bang3.mp3 in Resources */,
@@ -7757,6 +7821,7 @@
 				10A637631B3D409F0094E23E /* dishu_smile4@2x~ipad.png in Resources */,
 				10D105A219FDC70F00CA44E4 /* shi0.mp3 in Resources */,
 				10D1050519FDC70F00CA44E4 /* pei4.mp3 in Resources */,
+				1062B3711B82FF1D00582525 /* checkbox_uncheck@2x~ipad.png in Resources */,
 				10D106B319FDC70F00CA44E4 /* zen4.mp3 in Resources */,
 				10D1048F19FDC70F00CA44E4 /* mao2.mp3 in Resources */,
 				10D1048819FDC70F00CA44E4 /* man1.mp3 in Resources */,
@@ -7773,6 +7838,7 @@
 				10A637941B3D409F0094E23E /* lock@2x.png in Resources */,
 				10EC3D7519E92C8E005DB887 /* Images.xcassets in Resources */,
 				10D1064419FDC70F00CA44E4 /* xiao2.mp3 in Resources */,
+				100564141B8167F8000E6781 /* basket_inner@2x.png in Resources */,
 				10D1039119FDC70F00CA44E4 /* guo1.mp3 in Resources */,
 				10D106F019FDC70F00CA44E4 /* zhui4.mp3 in Resources */,
 				10A637791B3D409F0094E23E /* game_sel_cloud_far@2x~ipad.png in Resources */,
@@ -7892,6 +7958,7 @@
 				10D1047219FDC70F00CA44E4 /* luan3.mp3 in Resources */,
 				10D1065719FDC70F00CA44E4 /* xu1.mp3 in Resources */,
 				10A637B51B3D409F0094E23E /* sign_in_school_bg@2x~ipad.png in Resources */,
+				1062B3791B83002900582525 /* checkbox_check~ipad.png in Resources */,
 				10D104DE19FDC70F00CA44E4 /* niu1.mp3 in Resources */,
 				10D1030419FDC70F00CA44E4 /* dan1.mp3 in Resources */,
 				10D1057A19FDC70F00CA44E4 /* sai1.mp3 in Resources */,
@@ -8126,6 +8193,7 @@
 				10DA2FF31AFBB0E600649678 /* DDSHoleTypeTwo.m in Sources */,
 				10D4CE841B1DA7C100755ED3 /* PinZiChuiIndividualScene.m in Sources */,
 				10D1073019FF1D9200CA44E4 /* HSScrollGameScene.m in Sources */,
+				10625CD81B8177E600022C80 /* BHBInvidualMgr.m in Sources */,
 				107868FC1B305F59006C7868 /* SKNode+PlaySound.m in Sources */,
 				10C888A31B297E7B00082393 /* ChooseIndividualScene.m in Sources */,
 				107C4B8B19ED1FFE00EDA4B7 /* CGOption.m in Sources */,
@@ -8208,6 +8276,7 @@
 				10D4CEB21B1FDF4000755ED3 /* Task.m in Sources */,
 				10D1072019FE2B2800CA44E4 /* CGBallonRed.m in Sources */,
 				10B2F76519FCACF00062AA55 /* HSAnimal.m in Sources */,
+				10625CDE1B82B35A00022C80 /* InfoScene.m in Sources */,
 				10D1073419FF246300CA44E4 /* IndexControllerCell.m in Sources */,
 				10EC3D6819E92C8E005DB887 /* AppDelegate.m in Sources */,
 				10D4CEE31B1FF34A00755ED3 /* UIImage+MultiFormat.m in Sources */,
@@ -8237,6 +8306,7 @@
 				10D1071419FE215B00CA44E4 /* CGCharacter.m in Sources */,
 				10D1074219FF6E7800CA44E4 /* HttpRspErrorUtil.m in Sources */,
 				10DA30991B04D3EA00649678 /* JZBQuestion.m in Sources */,
+				10625CDB1B81891D00022C80 /* ZCBInvidualMgr.m in Sources */,
 				10DA30591AFF94EC00649678 /* ZMKModel.m in Sources */,
 				10E945F81A24102400E16624 /* Reachability.m in Sources */,
 				10D4CE351B155E3600755ED3 /* EnvironmentCrab.m in Sources */,
@@ -8379,8 +8449,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HappyStudy/ThirdPartys/TencentSDK",
@@ -8407,8 +8478,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HappyStudy/ThirdPartys/TencentSDK",

@@ -22,7 +22,7 @@
 - (void)addControllers;
 - (void)setFrogJumpTarget:(NSInteger)index;
 - (void)frogJump;
-- (void)frogFallDown;
+- (void)frogFallDownWithLeafIndex:(NSInteger)index;
 - (void)frogHappy;
 - (void)buildWorld;
 - (void)loadFrogJumpPositions;

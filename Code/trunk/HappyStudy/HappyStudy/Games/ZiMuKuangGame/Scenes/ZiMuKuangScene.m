@@ -106,11 +106,12 @@
 
 - (void)addFruitToBasket:(HSLabelSprite *)fruit {
     HSLabelSprite *toAddFruit = [[HSLabelSprite alloc] initWithTexture:fruit.texture
-                                                                 title:fruit.label.text];
-    toAddFruit.label.position = fruit.label.position;
-    toAddFruit.label.fontColor = fruit.label.fontColor;
-    toAddFruit.label.fontSize = fruit.label.fontSize;
-    toAddFruit.label.fontName = fruit.label.fontName;
+                                                                 title:@""];
+//    toAddFruit.label.position = fruit.label.position;
+//    toAddFruit.label.fontColor = fruit.label.fontColor;
+//    toAddFruit.label.fontSize = fruit.label.fontSize;
+//    toAddFruit.label.fontName = fruit.label.fontName;
+    toAddFruit.name = BASKET_NAME;
     [self.basket addFruit:toAddFruit];
 }
 
@@ -126,9 +127,10 @@
     [self addNode:backgroundSp atWorldLayer:HSSWorldLayerGround];
     
     // Characters
-    self.basket = [[ZMKBasket alloc] initWithTexture:[SKTexture textureWithImageNamed:@"basket"]
+    self.basket = [[ZMKBasket alloc] initWithTexture:[SKTexture textureWithImageNamed:@"basket_inner"]
                                                title:@""];
     self.basket.name = BASKET_NAME;
+    [self.basket loadUIWithName:self.basket.name];
     self.basket.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.basket.size.width / 2, self.basket.size.height / 2)];
     self.basket.physicsBody.categoryBitMask = ZMKColliderTypeBasket;
     self.basket.physicsBody.collisionBitMask = 0;
@@ -235,6 +237,8 @@
         [self.fruit removeActionForKey:DROPPING_ANIMATION];
     }
     
+    self.fruit.name = @"new";
+    
     SKAction *changeFruitAction = [SKAction runBlock:^{
         NSUInteger random = [GlobalUtil randomIntegerWithMax:4] + 1;
         SKTexture *texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"zimukuang_fruit%ld", (long)random]];
@@ -312,6 +316,10 @@
 
 - (NSInteger)currentTotalCount {
     return self.gameMgr.models.count;
+}
+
+- (void)finishAll {
+    [super finishAll];
 }
 
 - (BOOL)isFruitDropping {

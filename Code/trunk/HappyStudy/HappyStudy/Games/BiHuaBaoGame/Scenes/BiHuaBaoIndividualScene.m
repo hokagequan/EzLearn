@@ -7,7 +7,7 @@
 //
 
 #import "BiHuaBaoIndividualScene.h"
-#import "BHBMgr.h"
+#import "BHBInvidualMgr.h"
 #import "AccountMgr.h"
 
 #import "GradientView.h"
@@ -186,6 +186,11 @@
     [self.myGameMgr gameEnd];
     [self showMask:YES];
     [self showShare];
+}
+
+- (void)loadGameMgr {
+    self.myGameMgr = [[BHBInvidualMgr alloc] init];
+    self.myGameMgr.gameScene = self;
 }
 
 - (void)refreshTime:(NSInteger)time {
