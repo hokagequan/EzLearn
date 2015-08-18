@@ -44,6 +44,7 @@
         model.indexStr = [NSString stringWithFormat:@"%@", group[@"pinyin"]];
         ZMKQuestion *qModel = [[ZMKQuestion alloc] init];
         qModel.title = group[@"pinyin"];
+        qModel.sound = group[@"audio_path"];
         model.question = qModel;
         
         NSArray *options = @[group[@"choiceA"], group[@"choiceB"], group[@"choiceC"], group[@"choiceD"]];
