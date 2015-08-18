@@ -321,6 +321,9 @@
 - (void)finishAll {
     // 子类继承
     [self.gameMgr submitGameCompleteInfo];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"well Done~， Completed" delegate:self cancelButtonTitle:@"Back" otherButtonTitles:@"Replay", nil];
+    [alert show];
 }
 
 - (void)loadMore {
@@ -448,10 +451,10 @@
 
 #pragma mark - AlertView
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
+    if (buttonIndex == 1) {
         [self startFromBegain];
     }
-    else if (buttonIndex == 1) {
+    else if (buttonIndex == 0) {
         [self clickBack:nil];
     }
 }

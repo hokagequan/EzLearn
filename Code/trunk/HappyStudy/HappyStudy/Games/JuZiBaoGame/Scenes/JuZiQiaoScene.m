@@ -59,7 +59,7 @@
                                      [NSValue valueWithCGPoint:CGPointMake(602, 156)],
                                      [NSValue valueWithCGPoint:CGPointMake(784, 177)],
                                      [NSValue valueWithCGPoint:CGPointMake(957, 285)]] mutableCopy];
-        self.frogBasePosition = CGPointMake(929, 163);
+        self.frogBasePosition = CGPointMake(100, 80);
         self.curRiverLayerIndex = 0;
         self.lastIndex = 0;
         self.isWorldMoving = NO;
@@ -128,18 +128,20 @@
 }
 
 - (void)attractLeaf:(OptionLeaf *)leaf {
-    for (int i = 0; i < 12; i++) {
-        CGPoint attractPosition = [UniversalUtil universaliPadPoint:[self leafPositionWithIndex:i]
-                                                        iPhonePoint:CGPOINT_NON
-                                                            offsetX:0
-                                                            offsetY:-30];
-        if (DistanceBetweenPoints(leaf.position, attractPosition) <= [UniversalUtil universalDelta:20]) {
+    NSArray *indexes = [self indexsOfFirsLineWithCount:self.questionLeafs.count];
+    for (int i = 0; i < 11; i++) {
+        SKSpriteNode *emptyLeaf = self.emptyLeafs[i];
+        CGPoint attractPosition = emptyLeaf.position;
+        if (DistanceBetweenPoints(leaf.position, attractPosition) <= [UniversalUtil universalDelta:20] &&
+            emptyLeaf.alpha == 1.0) {
             leaf.position = attractPosition;
             if (leaf.locationIndex != -1) {
-                [self.myGameMgr loadAnswerWithIndex:-1 toLocation:leaf.locationIndex add:NO];
+                [self.myGameMgr loadAnswerWithIndex:[self.questionLeafs indexOfObject:leaf] toLocation:leaf.locationIndex add:NO];
             }
-            leaf.locationIndex = i;
-            [self.myGameMgr loadAnswerWithIndex:[self.questionLeafs indexOfObject:leaf] toLocation:i add:YES];
+            
+            NSInteger index = [indexes indexOfObject:@(i)];
+            leaf.locationIndex = index;
+            [self.myGameMgr loadAnswerWithIndex:[self.questionLeafs indexOfObject:leaf] toLocation:index add:YES];
             
             return;
         }
@@ -177,7 +179,7 @@
     baseLeaf.size = [UniversalUtil universaliPadSize:ZOOM_IN_SIZE
                                           iPhoneSize:CGSIZE_NON];
     baseLeaf.zPosition = zPostionCharacter;
-    baseLeaf.position = [UniversalUtil universaliPadPoint:CGPointMake(929, 163)
+    baseLeaf.position = [UniversalUtil universaliPadPoint:CGPointMake(100, 80)
                                               iPhonePoint:CGPOINT_NON
                                                   offsetX:-20
                                                   offsetY:0];
@@ -267,6 +269,20 @@
     return ([name isEqualToString:kLeftButton] || [name isEqualToString:kRightButton] || [name isEqualToString:kBackButton]);
 }
 
+- (NSArray *)indexsOfFirsLineWithCount:(NSInteger)count {
+    NSMutableArray *indexes = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        NSInteger index = 2 - powf(-1, i % 2) * ((i + 1 * (i % 2)) / 2);
+        [indexes addObject:@(index)];
+    }
+    
+    NSArray *array = [indexes sortedArrayUsingComparator:^NSComparisonResult(id  __nonnull obj1, id  __nonnull obj2) {
+        return ([(NSNumber *)obj1 compare:(NSNumber *)obj2] == NSOrderedDescending);
+    }];
+    
+    return array;
+}
+
 - (void)loadGameMgr {
     self.myGameMgr = [[JZQMgr alloc] init];
     self.myGameMgr.gameScene = self;
@@ -289,12 +305,16 @@
         [self.frog.allJumpPositions removeAllObjects];
     }
     
+    NSArray *indexes = [self indexsOfFirsLineWithCount:self.questionLeafs.count];
     for (int i = 0; i < self.questionLeafs.count; i++) {
-        CGPoint position = [self leafPositionWithIndex:i];
-        position = [UniversalUtil universaliPadPoint:position
-                                         iPhonePoint:CGPOINT_NON
-                                             offsetX:-10
-                                             offsetY:-30];
+        NSInteger index = [indexes[i] integerValue];
+        OptionLeaf *leaf = self.emptyLeafs[index];
+        CGPoint position = leaf.position;
+        
+//        position = [UniversalUtil universaliPadPoint:position
+//                                         iPhonePoint:CGPOINT_NON
+//                                             offsetX:-10
+//                                             offsetY:-30];
         NSValue *value = [NSValue valueWithCGPoint:position];
         [self.frog.allJumpPositions addObject:value];
     }
@@ -349,14 +369,21 @@
     
     JZQModel *model = self.myGameMgr.models[index];
     
+    NSArray *indexes = [self indexsOfFirsLineWithCount:model.words.count];
     for (int i = 0; i < self.emptyLeafs.count; i++) {
         SKSpriteNode *emptyLeaf = self.emptyLeafs[i];
-        emptyLeaf.alpha = i < model.words.count ? 1.0 : 0.0;
+        if (model.words.count >= 6) {
+            emptyLeaf.alpha = i < model.words.count ? 1.0 : 0.0;
+        }
+        else {
+            emptyLeaf.alpha = [indexes containsObject:@(i)] ? 1.0 : 0.0;
+        }
     }
     
     // Question Leafs
     for (int i = 0; i < model.words.count; i++) {
-        NSValue *value = self.leafRandomPositions[i];
+        NSInteger index = [indexes[i] integerValue];
+        NSValue *value = self.leafRandomPositions[index];
         CGPoint position = value.CGPointValue;
         
         JZQWord *word = model.words[i];
