@@ -51,6 +51,7 @@
             option.title = detail[@"part"];
             option.sound = detail[@"audio_path"];
             option.isAnswer = [detail[@"correct"] boolValue];
+            option.word = detail[@"character"];
             
             [model.options addObject:option];
         }
