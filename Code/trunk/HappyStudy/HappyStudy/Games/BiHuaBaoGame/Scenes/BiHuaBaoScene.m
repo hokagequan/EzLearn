@@ -227,7 +227,7 @@ typedef enum {
 #ifdef EZLEARN_DEBUG
 #else
     [self playSound:option.sound completion:^{
-        [self performSelector:@selector(playCorrectFemaleSound) withObject:nil afterDelay:0.3];
+        [self performSelector:@selector(playCorrectMaleSound) withObject:nil afterDelay:0.3];
     }];
 #endif
 }

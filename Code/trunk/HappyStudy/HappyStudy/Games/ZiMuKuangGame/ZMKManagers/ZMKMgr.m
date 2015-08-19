@@ -82,7 +82,7 @@
 }
 
 - (void)correct {
-    [self.gameScene playCorrectFemaleSound];
+    [self.gameScene playCorrectMaleSound];
     
     self.clickCount++;
     ZMKModel *model = self.models[self.gameScene.curIndex];

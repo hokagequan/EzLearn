@@ -66,7 +66,7 @@
 }
 
 - (void)speechSynthesizer:(nonnull AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(nonnull AVSpeechUtterance *)utterance {
-    [self playCorrectFemaleSound];
+    [self playCorrectMaleSound];
 }
 
 @end

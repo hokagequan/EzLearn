@@ -154,7 +154,7 @@
         
     [HttpReqMgr requestGetGameData:[AccountMgr sharedInstance].user.name
                             gameID:StudyGameJuZiQiao
-                              from:-1
+                              from:0
                              count:1000
                         completion:^(NSDictionary *info) {
                             [self appendDataWithInfo:info];
@@ -218,13 +218,13 @@
 
 - (void)next {
     self.gameScene.userInteractionEnabled = YES;
-    if (self.gameScene.curIndex < self.totalQuestionCount - 1) {
-        self.gameScene.curIndex++;
-        
-        return;
+    if (self.maxGroupNum == self.models.count &&
+        self.gameScene.curIndex == self.models.count - 1) {
+        [self.gameScene finishAll];
     }
-    
-    [self.gameScene finishAll];
+    else {
+        self.gameScene.curIndex++;
+    }
 }
 
 - (void)resetAnswers {
