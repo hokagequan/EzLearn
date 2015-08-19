@@ -154,7 +154,7 @@
         
     [HttpReqMgr requestGetGameData:[AccountMgr sharedInstance].user.name
                             gameID:StudyGameJuZiQiao
-                              from:-1
+                              from:0
                              count:1000
                         completion:^(NSDictionary *info) {
                             [self appendDataWithInfo:info];
