@@ -101,7 +101,7 @@ typedef enum {
 }
 
 - (void)correct {
-    [self.gameScene playCorrectFemaleSound];
+    [self.gameScene playCorrectMaleSound];
     
     self.clickCount++;
     DDSModel *model = self.models[self.gameScene.curIndex];
