@@ -87,7 +87,7 @@
         NSDictionary *group = dict[@"Question"];
         CGChooseModel *cModel = [[CGChooseModel alloc] init];
         cModel.modelID = [dict[@"QuestionsID"] integerValue];
-        cModel.indexStr = group[@"character"];
+        cModel.indexStr = group[@"part"];
         CGQuestionModel *qModel = [[CGQuestionModel alloc] init];
         qModel.title = group[@"part"];
         qModel.soundName = group[@"audio_path"];
