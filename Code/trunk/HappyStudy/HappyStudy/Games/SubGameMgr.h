@@ -16,6 +16,7 @@
 @property (nonatomic) NSInteger maxGroupNum;
 @property (nonatomic) NSInteger curGroupCount;
 @property (nonatomic) NSInteger score;
+@property (nonatomic) NSInteger curLevel;
 
 // 统计
 @property (strong, nonatomic) NSDate *totalTimingDate;

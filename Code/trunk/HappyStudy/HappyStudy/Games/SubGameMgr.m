@@ -19,6 +19,14 @@
 
 @implementation SubGameMgr
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.curLevel = [GameMgr sharedInstance].level;
+    }
+    
+    return self;
+}
+
 - (void)correct:(NSString *)questionID options:(NSArray *)options {
     self.correctCount++;
     self.isDoingQuestion = YES;

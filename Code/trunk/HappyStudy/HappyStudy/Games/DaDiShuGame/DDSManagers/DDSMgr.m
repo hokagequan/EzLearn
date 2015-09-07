@@ -41,6 +41,7 @@ typedef enum {
     self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
         self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+        self.curLevel = [info[@"DifficultLevel"] integerValue];
     }
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
     self.curGroupCount = pos - array.count + 1;
@@ -422,7 +423,7 @@ typedef enum {
 - (void)loadShiZiChuiServerIndividualMoreGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure {
     [HttpReqMgr requestIndividualGetGameData:[AccountMgr sharedInstance].user.name
                                       gameID:StudyGameShiZiChui
-                                       level:[GameMgr sharedInstance].level
+                                       level:self.curLevel
                                         from:self.models.count
                                        count:1000
                                   completion:^(NSDictionary *info) {
@@ -554,7 +555,7 @@ typedef enum {
 - (void)loadPinZiChuiIndividualServerMoreGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure {
     [HttpReqMgr requestIndividualGetGameData:[AccountMgr sharedInstance].user.name
                                       gameID:StudyGamePinZiChui
-                                       level:[GameMgr sharedInstance].level
+                                       level:self.curLevel
                                         from:self.models.count
                                        count:1000
                                   completion:^(NSDictionary *info) {

@@ -26,6 +26,7 @@
                                             NSMutableArray *cgModels = [CGMgr sharedInstance].models;
                                             
                                             [CGMgr sharedInstance].maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
+                                            [CGMgr sharedInstance].curLevel = [info[@"DifficultLevel"] integerValue];
                                             NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
                                             [CGMgr sharedInstance].curGroupCount = pos - array.count + 1;
                                             

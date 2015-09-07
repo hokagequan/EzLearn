@@ -172,11 +172,30 @@
 }
 
 - (void)finishAll {
-    [super finishAll];
-    
-    [self.myGameMgr gameEnd];
-    [self showMask:YES];
-    [self showShare];
+    NSInteger count = self.myGameMgr.models.count;
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [self loadGameDataFrom:self.myGameMgr.models.count count:1000 Complete:^{
+        [SVProgressHUD dismiss];
+        if (count < self.myGameMgr.models.count) {
+            [self expandIndexController];
+            self.curIndex++;
+        }
+        else {
+            [super finishAll];
+            
+            [self.myGameMgr gameEnd];
+            [self showMask:YES];
+            [self showShare];
+        }
+    } failure:^(NSDictionary *info) {
+        [SVProgressHUD dismiss];
+        
+        [super finishAll];
+        
+        [self.myGameMgr gameEnd];
+        [self showMask:YES];
+        [self showShare];
+    }];
 }
 
 - (void)gameOver {
