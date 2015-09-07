@@ -21,7 +21,7 @@
 - (void)didMoveToView:(nonnull SKView *)view {
     [super didMoveToView:view];
     
-//    self.uikitContainer.userInteractionEnabled = NO;
+    self.uikitContainer.userInteractionEnabled = NO;
     
     [self showAD];
 }
@@ -95,6 +95,11 @@
     [self.myGameMgr.models removeAllObjects];
     GameSelectIndividualScene *scene = [[GameSelectIndividualScene alloc] initWithSize:self.size];
     [self.view presentScene:scene];
+}
+
+- (void)expandIndexController {
+    self.pageCount = [self currentTotalCount];
+    [self.indexController reloadData];
 }
 
 - (void)finishAll {

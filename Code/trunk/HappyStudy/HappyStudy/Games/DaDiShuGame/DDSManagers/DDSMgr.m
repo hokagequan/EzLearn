@@ -40,7 +40,7 @@ typedef enum {
     
     self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
-        self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+        self.maxGroupNum += [info[@"ReturnQestionNum"] integerValue];
         self.curLevel = [info[@"DifficultLevel"] integerValue];
     }
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];

@@ -35,7 +35,7 @@
 
 - (id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        self.droppingDuration = 3.4;
+        self.droppingDuration = self.myGameMgr.originalDroppingTime;
         CGPoint position = [UniversalUtil universaliPadPoint:CGPointMake(78, 216)
                                                  iPhonePoint:CGPointMake(39, 78)
                                                      offsetX:0
