@@ -10,7 +10,7 @@
 #import "SubGameMgr.h"
 #import "HSLabelSprite.h"
 
-#define ORIGINAL_DROPPING_TIME 3.4
+//#define ORIGINAL_DROPPING_TIME 3.4
 #define MIN_DROPPING_TIME 1.0
 
 @class ZiMuKuangScene;
@@ -34,6 +34,7 @@ typedef enum {
 @property (nonatomic) ZMKGameStat stat;
 @property (nonatomic) NSInteger basketFruitNumber;
 @property (nonatomic) NSInteger life;
+@property (nonatomic) CGFloat originalDroppingTime;
 
 // 字母筐
 - (void)loadServerGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure;

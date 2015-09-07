@@ -8,6 +8,7 @@
 
 #import "PengPengDaCiScene.h"
 #import "DDPMgr.h"
+#import "DDPCharacter.h"
 
 @implementation PengPengDaCiScene
 
@@ -36,6 +37,31 @@
                 failure(info);
             }
         }];
+    }
+}
+
+- (void)checkMatch {
+    if (self.selectCharacters.count < 2) {
+        return;
+    }
+    
+    DDPCharacter *character1 = self.selectCharacters[0];
+    DDPCharacter *character2 = self.selectCharacters[1];
+    if ([character1.matchKey isEqualToString:character2.matchKey]) {
+        // Match
+        [self playSoundCorrectCompletion:^{
+            [GlobalUtil speakText:character1.matchKey];
+        }];
+        character1.requestedAnimation = HSAnimationStateDeath;
+        character2.requestedAnimation = HSAnimationStateDeath;
+        [self.selectCharacters removeAllObjects];
+    }
+    else {
+        // Not match
+        [self playSoundWrong];
+        character1.selected = NO;
+        character2.selected = NO;
+        [self.selectCharacters removeAllObjects];
     }
 }
 

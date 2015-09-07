@@ -29,6 +29,7 @@
     self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
         self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+        self.curLevel = [info[@"DifficultLevel"] integerValue];
     }
     
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
@@ -41,6 +42,9 @@
         BHBModel *model = [[BHBModel alloc] init];
         model.modelID = dict[@"QuestionsID"];
         model.indexStr = [NSString stringWithFormat:@"%@", @(pos + 1 + i)];
+        if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
+            model.indexStr = [NSString stringWithFormat:@"%@", @(models.count + 1)];
+        }
         
         BHBQuestion *qModel = [[BHBQuestion alloc] init];
         qModel.title = [NSString stringWithFormat:@"%@", group[@"character"]];

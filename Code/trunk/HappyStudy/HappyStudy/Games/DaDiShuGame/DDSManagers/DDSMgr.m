@@ -15,8 +15,8 @@
 #import "DaDiShuScene.h"
 
 #define MAX_WRONG_TIMES         3
-#define ORIGINAL_STAY_TIME      2.5
-#define MIN_STAY_TIME           1.8
+#define ORIGINAL_STAY_TIME      1.8
+#define MIN_STAY_TIME           1.2
 
 typedef enum {
     GameStatStart = 1,
@@ -40,7 +40,8 @@ typedef enum {
     
     self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
-        self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+        self.maxGroupNum += [info[@"ReturnQestionNum"] integerValue];
+        self.curLevel = [info[@"DifficultLevel"] integerValue];
     }
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
     self.curGroupCount = pos - array.count + 1;
@@ -135,7 +136,7 @@ typedef enum {
 }
 
 - (CGFloat)caculateStayTimeWith:(NSInteger)index {
-    CGFloat time = ORIGINAL_STAY_TIME - 0.3 * (index - 1);
+    CGFloat time = ORIGINAL_STAY_TIME - 0.1 * (index - 1);
     
     return time >= MIN_STAY_TIME ? time : MIN_STAY_TIME;
 }
@@ -422,7 +423,7 @@ typedef enum {
 - (void)loadShiZiChuiServerIndividualMoreGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure {
     [HttpReqMgr requestIndividualGetGameData:[AccountMgr sharedInstance].user.name
                                       gameID:StudyGameShiZiChui
-                                       level:[GameMgr sharedInstance].level
+                                       level:self.curLevel
                                         from:self.models.count
                                        count:1000
                                   completion:^(NSDictionary *info) {
@@ -554,7 +555,7 @@ typedef enum {
 - (void)loadPinZiChuiIndividualServerMoreGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure {
     [HttpReqMgr requestIndividualGetGameData:[AccountMgr sharedInstance].user.name
                                       gameID:StudyGamePinZiChui
-                                       level:[GameMgr sharedInstance].level
+                                       level:self.curLevel
                                         from:self.models.count
                                        count:1000
                                   completion:^(NSDictionary *info) {

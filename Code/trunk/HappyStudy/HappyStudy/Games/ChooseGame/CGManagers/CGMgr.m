@@ -37,7 +37,8 @@
     
     self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
-        self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+        self.maxGroupNum += [info[@"ReturnQestionNum"] integerValue];
+        self.curLevel = [info[@"DifficultLevel"] integerValue];
     }
     
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
@@ -75,7 +76,8 @@
     
     self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
-        self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+        self.maxGroupNum += [info[@"ReturnQestionNum"] integerValue];
+        self.curLevel = [info[@"DifficultLevel"] integerValue];
     }
     
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
@@ -87,7 +89,7 @@
         NSDictionary *group = dict[@"Question"];
         CGChooseModel *cModel = [[CGChooseModel alloc] init];
         cModel.modelID = [dict[@"QuestionsID"] integerValue];
-        cModel.indexStr = group[@"character"];
+        cModel.indexStr = group[@"part"];
         CGQuestionModel *qModel = [[CGQuestionModel alloc] init];
         qModel.title = group[@"part"];
         qModel.soundName = group[@"audio_path"];
@@ -304,7 +306,7 @@
 - (void)loadPinZiBaoIndividualServerMoreGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure {
     [HttpReqMgr requestIndividualGetGameData:[AccountMgr sharedInstance].user.name
                                       gameID:StudyGamePinZiBao
-                                       level:[GameMgr sharedInstance].level
+                                       level:self.curLevel
                                         from:self.models.count
                                        count:1000
                                   completion:^(NSDictionary *info) {

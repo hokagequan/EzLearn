@@ -32,7 +32,6 @@
 
 @property (strong, nonatomic) NSMutableArray *cards;
 @property (strong, nonatomic) NSMutableArray *toDestroyCards;
-@property (strong, nonatomic) NSMutableArray *selectCharacters;
 @property (strong, nonatomic) NSMutableArray *cardPosistions;
 
 @property (strong, nonatomic) SKTexture *bubbleTexture;
@@ -181,7 +180,7 @@
     if ([character1.matchKey isEqualToString:character2.matchKey]) {
         // Match
         [self playSoundCorrectCompletion:^{
-            [GlobalUtil speakText:character1.matchKey];
+//            [GlobalUtil speakText:character1.matchKey];
         }];
         character1.requestedAnimation = HSAnimationStateDeath;
         character2.requestedAnimation = HSAnimationStateDeath;

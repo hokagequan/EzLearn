@@ -21,6 +21,14 @@
 
 @implementation PZKMgr
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.originalDroppingTime = 3.4;
+    }
+    
+    return self;
+}
+
 - (void)appendDataWithInfo:(NSDictionary *)info {
     NSArray *array = info[@"Questions"];
     NSMutableArray *models = self.models;
@@ -28,6 +36,7 @@
     self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
         self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+        self.curLevel = [info[@"DifficultLevel"] integerValue];
     }
     
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
@@ -146,7 +155,7 @@
             ZMKModel *model = self.models[self.gameScene.curIndex];
             self.optionIndex++;
             
-            CGFloat duration = ORIGINAL_DROPPING_TIME;
+            CGFloat duration = self.originalDroppingTime;
             if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
                 duration = [self caculateStayTimeWith:self.correctCount];
             }

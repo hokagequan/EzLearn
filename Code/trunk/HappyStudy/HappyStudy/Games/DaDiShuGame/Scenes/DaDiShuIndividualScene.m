@@ -60,7 +60,7 @@
 - (void)didMoveToView:(SKView *)view {
     [super didMoveToView:view];
     
-    self.uikitContainer.userInteractionEnabled = NO;
+//    self.uikitContainer.userInteractionEnabled = NO;
 }
 
 - (void)willMoveFromView:(nonnull SKView *)view {
@@ -143,10 +143,28 @@
 }
 
 - (void)finishAll {
-    [super finishAll];
-    
-    [self showMask:YES];
-    [self showShare];
+    NSInteger count = self.myGameMgr.models.count;
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [self loadGameDataFrom:self.myGameMgr.models.count count:1000 Complete:^{
+        [SVProgressHUD dismiss];
+        if (count < self.myGameMgr.models.count) {
+            [self expandIndexController];
+            self.curIndex++;
+        }
+        else {
+            [super finishAll];
+            
+            [self showMask:YES];
+            [self showShare];
+        }
+    } failure:^(NSDictionary *info) {
+        [SVProgressHUD dismiss];
+        
+        [super finishAll];
+        
+        [self showMask:YES];
+        [self showShare];
+    }];
 }
 
 - (void)gameOver {

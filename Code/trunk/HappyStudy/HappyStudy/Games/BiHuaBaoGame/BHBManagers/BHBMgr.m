@@ -38,6 +38,7 @@
     self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
         self.maxGroupNum = [info[@"ReturnQestionNum"] integerValue];
+        self.curLevel = [info[@"DifficultLevel"] integerValue];
     }
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
     self.curGroupCount = pos - array.count + 1;
@@ -49,6 +50,9 @@
         BHBModel *model = [[BHBModel alloc] init];
         model.modelID = dict[@"QuestionsID"];
         model.indexStr = [NSString stringWithFormat:@"%@", @(pos + 1 + i)];
+        if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
+            model.indexStr = [NSString stringWithFormat:@"%@", @(models.count + 1)];
+        }
         
         BHBQuestion *qModel = [[BHBQuestion alloc] init];
         qModel.title = [NSString stringWithFormat:@"%@", group[@"strokeNo"]];
@@ -293,7 +297,7 @@
 - (void)loadServerIndividualMoreGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure {
     [HttpReqMgr requestIndividualGetGameData:[AccountMgr sharedInstance].user.name
                                       gameID:StudyGameBiHuaBao
-                                       level:[GameMgr sharedInstance].level
+                                       level:self.curLevel
                                         from:self.models.count
                                        count:1000
                                   completion:^(NSDictionary *info) {
@@ -420,7 +424,7 @@
 - (void)loadZuCiBaoIndividualServerMoreGameDataCompletion:(void (^)(void))completion failure:(void (^)(NSDictionary *))failure {
     [HttpReqMgr requestIndividualGetGameData:[AccountMgr sharedInstance].user.name
                                       gameID:StudyGameZuCiBao
-                                       level:[GameMgr sharedInstance].level
+                                       level:self.curLevel
                                         from:-1
                                        count:1000
                                   completion:^(NSDictionary *info) {
