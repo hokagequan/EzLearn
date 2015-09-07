@@ -37,10 +37,12 @@
     NSArray *array = info[@"Questions"];
     NSMutableArray *models = self.models;
     
-    self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
         self.maxGroupNum += [info[@"ReturnQestionNum"] integerValue];
         self.curLevel = [info[@"DifficultLevel"] integerValue];
+    }
+    else {
+        self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     }
     
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
@@ -52,6 +54,9 @@
         NSArray *group = dict[@"Question"];
         DDPGroupModel *gModel = [[DDPGroupModel alloc] init];
         gModel.indexStr = [NSString stringWithFormat:@"%@", @(pos + 1 + i)];
+        if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
+            gModel.indexStr = [NSString stringWithFormat:@"%@", @(models.count + 1)];
+        }
         gModel.modelID = [dict[@"QuestionsID"] integerValue];
         for (int j = 0; j < group.count; j++) {
             NSDictionary *modelInfo = group[j];
@@ -81,10 +86,12 @@
     NSArray *array = info[@"Questions"];
     NSMutableArray *models = self.models;
     
-    self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
         self.maxGroupNum += [info[@"ReturnQestionNum"] integerValue];
         self.curLevel = [info[@"DifficultLevel"] integerValue];
+    }
+    else {
+        self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     }
     
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
