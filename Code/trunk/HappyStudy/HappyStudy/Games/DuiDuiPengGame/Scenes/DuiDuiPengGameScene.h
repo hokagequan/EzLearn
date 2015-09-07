@@ -15,8 +15,11 @@
 
 @interface DuiDuiPengGameScene : HSScrollGameScene
 
+@property (strong, nonatomic) NSMutableArray *selectCharacters;
+
 - (void)clickCharacter:(DDPCharacter *)character;
 - (void)removeCharacter:(DDPCharacter *)character;
 - (void)addControllers;
+- (void)checkMatch;
 
 @end
