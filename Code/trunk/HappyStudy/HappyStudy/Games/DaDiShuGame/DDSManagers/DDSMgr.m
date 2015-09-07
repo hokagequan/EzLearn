@@ -15,8 +15,8 @@
 #import "DaDiShuScene.h"
 
 #define MAX_WRONG_TIMES         3
-#define ORIGINAL_STAY_TIME      2.5
-#define MIN_STAY_TIME           1.8
+#define ORIGINAL_STAY_TIME      1.8
+#define MIN_STAY_TIME           1.2
 
 typedef enum {
     GameStatStart = 1,
@@ -135,7 +135,7 @@ typedef enum {
 }
 
 - (CGFloat)caculateStayTimeWith:(NSInteger)index {
-    CGFloat time = ORIGINAL_STAY_TIME - 0.3 * (index - 1);
+    CGFloat time = ORIGINAL_STAY_TIME - 0.1 * (index - 1);
     
     return time >= MIN_STAY_TIME ? time : MIN_STAY_TIME;
 }

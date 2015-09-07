@@ -64,7 +64,7 @@
 }
 
 - (CGFloat)caculateStayTimeWith:(NSInteger)index {
-    CGFloat time = ORIGINAL_DROPPING_TIME - 0.3 * index;
+    CGFloat time = ORIGINAL_DROPPING_TIME - 0.1 * index;
     
     return time >= MIN_DROPPING_TIME ? time : MIN_DROPPING_TIME;
 }
