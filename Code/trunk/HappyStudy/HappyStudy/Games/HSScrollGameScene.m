@@ -9,6 +9,7 @@
 #import "HSScrollGameScene.h"
 #import "IndexControllerCell.h"
 #import "AccountMgr.h"
+#import "GameMgr.h"
 
 #define MoveSpeed 100
 
@@ -322,8 +323,10 @@
     // 子类继承
     [self.gameMgr submitGameCompleteInfo];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"well Done~， Completed" delegate:self cancelButtonTitle:@"Back" otherButtonTitles:@"Replay", nil];
-    [alert show];
+    if ([GameMgr sharedInstance].gameGroup == GroupSchool) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"well Done~， Completed" delegate:self cancelButtonTitle:@"Back" otherButtonTitles:@"Replay", nil];
+        [alert show];
+    }
 }
 
 - (void)loadMore {
