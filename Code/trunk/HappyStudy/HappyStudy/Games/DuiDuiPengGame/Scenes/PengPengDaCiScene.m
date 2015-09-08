@@ -10,6 +10,10 @@
 #import "DDPMgr.h"
 #import "DDPCharacter.h"
 
+@interface PengPengDaCiScene()<AVSpeechSynthesizerDelegate>
+
+@end
+
 @implementation PengPengDaCiScene
 
 #pragma mark - Override
@@ -49,8 +53,10 @@
     DDPCharacter *character2 = self.selectCharacters[1];
     if ([character1.matchKey isEqualToString:character2.matchKey]) {
         // Match
+        self.view.userInteractionEnabled = NO;
         [self playSoundCorrectCompletion:^{
-            [GlobalUtil speakText:character1.matchKey];
+            AVSpeechSynthesizer *synth = [GlobalUtil speakText:character1.matchKey];
+            synth.delegate = self;
         }];
         character1.requestedAnimation = HSAnimationStateDeath;
         character2.requestedAnimation = HSAnimationStateDeath;
@@ -63,6 +69,10 @@
         character2.selected = NO;
         [self.selectCharacters removeAllObjects];
     }
+}
+
+- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance {
+    self.view.userInteractionEnabled = YES;
 }
 
 @end
