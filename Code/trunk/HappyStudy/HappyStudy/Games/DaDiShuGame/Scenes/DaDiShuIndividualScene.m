@@ -60,7 +60,7 @@
 - (void)didMoveToView:(SKView *)view {
     [super didMoveToView:view];
     
-//    self.uikitContainer.userInteractionEnabled = NO;
+    self.uikitContainer.userInteractionEnabled = NO;
 }
 
 - (void)willMoveFromView:(nonnull SKView *)view {

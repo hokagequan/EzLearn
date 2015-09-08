@@ -38,10 +38,12 @@ typedef enum {
     NSArray *array = info[@"Questions"];
     NSMutableArray *models = self.models;
     
-    self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     if ([GameMgr sharedInstance].gameGroup == GroupIndividual) {
         self.maxGroupNum += [info[@"ReturnQestionNum"] integerValue];
         self.curLevel = [info[@"DifficultLevel"] integerValue];
+    }
+    else {
+        self.maxGroupNum = [info[@"TotalQuestionSize"] integerValue];
     }
     NSInteger pos = [info[@"CurrentQuestionPos"] integerValue];
     self.curGroupCount = pos - array.count + 1;
