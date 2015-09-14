@@ -38,6 +38,7 @@
 - (void)buildWorld;
 - (void)addControllers;
 - (void)chooseCorrect:(CGOption *)optionSp;
+- (void)submitLog:(BOOL)correct;
 
 - (Class)ballonClass:(NSInteger)index;
 

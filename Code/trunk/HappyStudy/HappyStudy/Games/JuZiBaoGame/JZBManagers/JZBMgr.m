@@ -103,7 +103,7 @@
     for (JZBOption *option in model.options) {
         [options addObject:option.title];
     }
-    [self correct:model.modelID options:options];
+    [self correct:model.modelID questions:nil options:options];
     
     self.score++;
     [self.gameScene refreshScore:self.score];
@@ -157,7 +157,7 @@
     for (JZBOption *option in model.options) {
         [options addObject:option.title];
     }
-    [self wrong:model.modelID options:options];
+    [self wrong:model.modelID questions:nil options:options];
     
     self.score--;
     if (self.score < 0) {

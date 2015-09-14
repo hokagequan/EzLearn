@@ -28,8 +28,8 @@
 - (void)appendDataWithInfo:(NSDictionary *)info;
 - (void)resetGameAnalyze;
 - (void)resetSignleQuestionAnalyze;
-- (void)correct:(NSString *)questionID options:(NSArray *)options;
-- (void)wrong:(NSString *)questionID options:(NSArray *)options;
+- (void)correct:(NSString *)questionID questions:(NSArray *)questions options:(NSArray *)options;
+- (void)wrong:(NSString *)questionID questions:(NSArray *)questions options:(NSArray *)options;
 - (void)submitGameCompleteInfo;
 - (void)gameStart;
 - (void)gameEnd;

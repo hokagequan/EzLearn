@@ -234,7 +234,7 @@
         for (HanZiModel *option in gModel.hzModels) {
             [options addObject:option.title];
         }
-        [self.gameMgr correct:[NSString stringWithFormat:@"%ld", (long)gModel.modelID] options:options];
+        [self.gameMgr correct:[NSString stringWithFormat:@"%ld", (long)gModel.modelID] questions:nil options:options];
         
         if (self.curIndex == [DDPMgr sharedInstance].models.count - 1) {
             if ([DDPMgr sharedInstance].curGroupCount > 0) {

@@ -27,12 +27,12 @@
     return self;
 }
 
-- (void)correct:(NSString *)questionID options:(NSArray *)options {
+- (void)correct:(NSString *)questionID questions:(NSArray *)questions options:(NSArray *)options {
     self.correctCount++;
     self.isDoingQuestion = YES;
     [AccountMgr sharedInstance].user.score++;
     
-    [self submitSingleQuestion:questionID correct:YES option:options];
+    [self submitSingleQuestion:questionID questionString:questions correct:YES option:options];
 }
 
 - (void)resetGameAnalyze {
@@ -50,13 +50,15 @@
     self.clickCount = 0;
 }
 
-- (void)submitSingleQuestion:(NSString *)questionID correct:(BOOL)correct option:(NSArray *)options {
+- (void)submitSingleQuestion:(NSString *)questionID questionString:(NSArray *)questionString correct:(BOOL)correct option:(NSArray *)options {
     NSInteger spendTime = [[NSDate date] timeIntervalSinceDate:self.timingDate];
+    
     [HttpReqMgr requestSubmit:[AccountMgr sharedInstance].user.name
                          game:[GameMgr sharedInstance].selGame
                         theID:questionID
                     spendTime:spendTime
                      clickNum:self.clickCount
+               questionString:questionString
                    clickArray:options
                     isCorrect:correct
                    individual:[GameMgr sharedInstance].gameGroup == GroupIndividual
@@ -76,10 +78,10 @@
                                failure:nil];
 }
 
-- (void)wrong:(NSString *)questionID options:(NSArray *)options {
+- (void)wrong:(NSString *)questionID questions:(NSArray *)questions options:(NSArray *)options {
     self.isDoingQuestion = YES;
     
-    [self submitSingleQuestion:questionID correct:NO option:options];
+    [self submitSingleQuestion:questionID questionString:questions correct:NO option:options];
 }
 
 #pragma mark - SubClass Complete

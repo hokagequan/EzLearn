@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HappyStudy/Games/ChooseGame/Scenes/ChooseGameScene.m"
-            timestampString = "461079810.783978"
+            timestampString = "463889728.93945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "533"
-            endingLineNumber = "533"
+            startingLineNumber = "552"
+            endingLineNumber = "552"
             landmarkName = "-clickLeft:"
             landmarkType = "5">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HappyStudy/Managers/HttpReqMgr.m"
-            timestampString = "461579678.328213"
+            timestampString = "463887260.437458"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "+requestGetAppShareContent:score:playTime:completion:failure:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,6 +106,22 @@
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "-appendDataWithInfo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HappyStudy/Games/SubGameMgr.m"
+            timestampString = "463373876.962836"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "-correct:questions:options:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

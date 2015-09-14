@@ -91,7 +91,7 @@
                                         }];
 }
 
-+ (void)requestSubmit:(NSString *)userName game:(StudyGame)game theID:(NSString *)theID spendTime:(NSInteger)second clickNum:(NSInteger)clickNum clickArray:(NSArray *)clickArray isCorrect:(BOOL)isCorrect individual:(BOOL)isIndividual completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure {
++ (void)requestSubmit:(NSString *)userName game:(StudyGame)game theID:(NSString *)theID spendTime:(NSInteger)second clickNum:(NSInteger)clickNum questionString:(NSArray *)questionString clickArray:(NSArray *)clickArray isCorrect:(BOOL)isCorrect individual:(BOOL)isIndividual completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"StudentID"] = userName;
     params[@"GameID"] = [NSString stringWithFormat:@"%@", @(game - 1)];
@@ -108,6 +108,9 @@
     params[@"ClickNo"] = [NSString stringWithFormat:@"%@", @(clickNum)];
     params[@"ClickArray"] = clickArray;
     params[@"IsCorrect"] = [NSString stringWithFormat:@"%@", @(isCorrect)];
+    if (questionString) {
+        params[@"QuestionString"] = questionString;
+    }
     
     NSString *method = @"ind_submitlogs";
     

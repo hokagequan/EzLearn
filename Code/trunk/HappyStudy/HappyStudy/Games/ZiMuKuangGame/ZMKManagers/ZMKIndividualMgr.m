@@ -26,7 +26,7 @@
     for (ZMKOption *option in model.options) {
         [options addObject:option.title];
     }
-    [self wrong:model.modelID options:options];
+    [self wrong:model.modelID questions:nil options:options];
     
     self.score--;
     self.life--;

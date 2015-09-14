@@ -112,7 +112,7 @@
     for (ZMKOption *option in model.options) {
         [options addObject:option.title];
     }
-    [self correct:model.modelID options:options];
+    [self correct:model.modelID questions:nil options:options];
     
     self.score++;
     self.life++;

@@ -36,7 +36,7 @@
         [options addObject:option.title];
     }
     
-    [self wrong:model.modelID options:options];
+    [self wrong:model.modelID questions:nil options:options];
     
     if (![self decreaseScore]) {
         if (self.maxGroupNum == self.models.count &&

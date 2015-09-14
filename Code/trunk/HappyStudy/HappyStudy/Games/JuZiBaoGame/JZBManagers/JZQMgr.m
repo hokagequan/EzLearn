@@ -118,7 +118,7 @@
                     for (JZQWord *option in model.words) {
                         [options addObject:option.word];
                     }
-                    [self wrong:model.modelID options:options];
+                    [self wrong:model.modelID questions:nil options:options];
                     [self.gameScene playWrongSound];
                     [self.gameScene frogFallDownWithLeafIndex:self.gameScene.frog.curLocationIndex];
                     self.stat &= ~JZQGameStatCheck;
@@ -131,7 +131,7 @@
             for (JZQWord *option in model.words) {
                 [options addObject:option.word];
             }
-            [self correct:model.modelID options:options];
+            [self correct:model.modelID questions:nil options:options];
             [self.gameScene frogHappy];
             [self.gameScene playCorrectMaleSound];
             self.stat &= ~JZQGameStatCheck;

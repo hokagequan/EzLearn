@@ -193,12 +193,7 @@
 }
 
 - (void)chooseCorrect:(CGOption *)optionSp {
-    CGChooseModel *cModel = self.myGameMgr.models[self.curIndex];
-    NSMutableArray *options = [NSMutableArray array];
-    for (CGOptionModel *option in cModel.options) {
-        [options addObject:option.title];
-    }
-    [self.gameMgr correct:[NSString stringWithFormat:@"%ld", (long)cModel.modelID] options:options];
+    [self submitLog:YES];
     
     if ([self.optionCharacters containsObject:optionSp]) {
         [self.optionCharacters removeObject:optionSp];
@@ -211,18 +206,42 @@
 }
 
 - (void)chooseWrong:(CGOption *)option {
-    CGChooseModel *cModel = self.myGameMgr.models[self.curIndex];
-    NSMutableArray *options = [NSMutableArray array];
-    for (CGOptionModel *option in cModel.options) {
-        [options addObject:option.title];
-    }
-    [self.gameMgr wrong:[NSString stringWithFormat:@"%ld", (long)cModel.modelID] options:options];
+    [self submitLog:NO];
     
 #ifdef EZLEARN_DEBUG
 #else
     [self playSoundWrong];
 #endif
     [option animationWrong];
+}
+
+- (void)submitLog:(BOOL)correct {
+    CGChooseModel *cModel = self.myGameMgr.models[self.curIndex];
+    NSMutableArray *options = [NSMutableArray array];
+    for (CGOptionModel *option in cModel.options) {
+        [options addObject:option.title];
+    }
+    
+    NSMutableArray *questions = [NSMutableArray array];
+    [questions addObject:cModel.question.title];
+    [questions addObject:cModel.question.soundName];
+    NSInteger answerIndex = 0;
+    for (int i = 0; i < cModel.options.count; i++) {
+        CGOptionModel *option = cModel.options[i];
+        [questions addObject:option.title];
+        
+        if (option.isAnswer) {
+            answerIndex = i + 1;
+        }
+    }
+    [questions addObject:@(answerIndex)];
+    
+    if (correct) {
+        [self.gameMgr correct:[NSString stringWithFormat:@"%ld", (long)cModel.modelID] questions:questions options:options];
+    }
+    else {
+        [self.gameMgr wrong:[NSString stringWithFormat:@"%ld", (long)cModel.modelID] questions:questions options:options];
+    }
 }
 
 - (void)playBackgroundMusic {

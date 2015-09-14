@@ -16,7 +16,7 @@
 
 + (void)requestCheckUser:(NSString *)userName completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure;
 
-+ (void)requestSubmit:(NSString *)userName game:(StudyGame)game theID:(NSString *)theID spendTime:(NSInteger)second clickNum:(NSInteger)clickNum clickArray:(NSArray *)clickArray isCorrect:(BOOL)isCorrect individual:(BOOL)isIndividual completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure;
++ (void)requestSubmit:(NSString *)userName game:(StudyGame)game theID:(NSString *)theID spendTime:(NSInteger)second clickNum:(NSInteger)clickNum questionString:(NSArray *)questionString clickArray:(NSArray *)clickArray isCorrect:(BOOL)isCorrect individual:(BOOL)isIndividual completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure;
 
 + (void)requestSubMitTotalGame:(NSString *)userName game:(StudyGame)game spendTime:(NSInteger)second totalQuestions:(NSInteger)totalCount TotalCorrectQuestions:(NSInteger)totalCorrectCount individual:(BOOL)isIndividual completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure;
 
