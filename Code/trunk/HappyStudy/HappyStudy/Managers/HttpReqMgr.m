@@ -240,13 +240,15 @@
                                         }];
 }
 
-+ (void)requestIndividualGetGameData:(NSString *)userName gameID:(StudyGame)gameID level:(NSInteger)level from:(NSInteger)fromPos count:(NSInteger)count completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure {
++ (void)requestIndividualGetGameData:(NSString *)userName gameID:(StudyGame)gameID level:(NSInteger)level from:(NSInteger)fromPos count:(NSInteger)count originalLevel:(NSInteger)originalLevel isFirstGet:(BOOL)isFirstGet completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"StudentID"] = userName;
     params[@"GameID"] = [NSString stringWithFormat:@"%@", @(gameID - 1)];
     params[@"QuestionPos"] = [NSString stringWithFormat:@"%@", @(fromPos)];
     params[@"QuestionNumber"] = [NSString stringWithFormat:@"%@", @(count)];
     params[@"DifficultLevel"] = [NSString stringWithFormat:@"%ld", (long)level];
+    params[@"Origin_Level"] = [NSString stringWithFormat:@"%ld", (long)originalLevel];
+    params[@"Is_FirstGet"] = [NSString stringWithFormat:@"%@", isFirstGet ? @"1" : @"0"];
     [[HttpReqMgr sharedInstance] requestWithMethod:@"ind_getquestions"
                                             params:params
                                         completion:^(NSDictionary *info) {
