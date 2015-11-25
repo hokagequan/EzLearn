@@ -210,6 +210,8 @@
                                        level:[GameMgr sharedInstance].level
                                         from:fromPos
                                        count:count
+                               originalLevel:[GameMgr sharedInstance].level
+                                  isFirstGet:YES
                                   completion:^(NSDictionary *info) {
                                       [self appendDataWithInfo:info];
                                       
@@ -286,6 +288,8 @@
                                        level:[GameMgr sharedInstance].level
                                         from:0
                                        count:1000
+                               originalLevel:[GameMgr sharedInstance].level
+                                  isFirstGet:YES
                                   completion:^(NSDictionary *info) {
                                       [self appendPZBDataWithInfo:info];
                                       
@@ -313,6 +317,8 @@
                                        level:self.curLevel
                                         from:self.models.count
                                        count:1000
+                               originalLevel:[GameMgr sharedInstance].level
+                                  isFirstGet:NO
                                   completion:^(NSDictionary *info) {
                                       [self appendPZBDataWithInfo:info];
                                       

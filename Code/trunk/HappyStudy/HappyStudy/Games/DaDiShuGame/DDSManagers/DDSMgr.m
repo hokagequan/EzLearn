@@ -401,6 +401,8 @@ typedef enum {
                                        level:[GameMgr sharedInstance].level
                                         from:0
                                        count:1000
+                               originalLevel:[GameMgr sharedInstance].level
+                                  isFirstGet:YES
                                   completion:^(NSDictionary *info) {
                                       [self appendDataWithInfo:info];
                                       
@@ -428,6 +430,8 @@ typedef enum {
                                        level:self.curLevel
                                         from:self.models.count
                                        count:1000
+                               originalLevel:[GameMgr sharedInstance].level
+                                  isFirstGet:NO
                                   completion:^(NSDictionary *info) {
                                       [self appendDataWithInfo:info];
                                       
@@ -533,6 +537,8 @@ typedef enum {
                                        level:[GameMgr sharedInstance].level
                                         from:0
                                        count:1000
+                               originalLevel:[GameMgr sharedInstance].level
+                                  isFirstGet:YES
                                   completion:^(NSDictionary *info) {
                                       [self appendDataWithInfo:info];
                                       
@@ -560,6 +566,8 @@ typedef enum {
                                        level:self.curLevel
                                         from:self.models.count
                                        count:1000
+                               originalLevel:[GameMgr sharedInstance].level
+                                  isFirstGet:NO
                                   completion:^(NSDictionary *info) {
                                       if (completion) {
                                           completion();

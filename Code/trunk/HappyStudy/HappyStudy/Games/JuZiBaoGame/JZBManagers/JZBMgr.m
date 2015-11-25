@@ -240,6 +240,8 @@
                                        level:[GameMgr sharedInstance].level
                                         from:self.models.count
                                        count:1000
+                               originalLevel:[GameMgr sharedInstance].level
+                                  isFirstGet:YES
                                   completion:^(NSDictionary *info) {
                                       [self appendDataWithInfo:info];
                                       
@@ -267,6 +269,8 @@
                                        level:self.curLevel
                                         from:self.models.count
                                        count:1000
+                               originalLevel:[GameMgr sharedInstance].level
+                                  isFirstGet:NO
                                   completion:^(NSDictionary *info) {
                                       [self appendDataWithInfo:info];
                                       if (completion) {
