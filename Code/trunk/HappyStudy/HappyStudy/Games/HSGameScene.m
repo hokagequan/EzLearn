@@ -47,10 +47,12 @@
 }
 
 - (void)willMoveFromView:(nonnull SKView *)view {
-    [super willMoveFromView:view];
-    
     double time = [AccountMgr sharedInstance].user.playTime;
     [AccountMgr sharedInstance].user.playTime = time + [[NSDate date] timeIntervalSinceDate:self.beginDate];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNOTIFICATION_SHOW_AD object:@(NO)];
+    
+    [super willMoveFromView:view];
 }
 
 - (void)buildWorld {}
@@ -149,12 +151,13 @@
 }
 
 - (void)showAD {
-    SKSpriteNode *adSp = [SKSpriteNode spriteNodeWithImageNamed:@"ad_bg"];
-    adSp.zPosition = 9000;
-    adSp.position = CGPointMake(self.size.width / 2, adSp.size.height / 2);
-    adSp.name = kAD_BUTTON;
-    adSp.size = CGSizeMake(self.size.width, adSp.size.height);
-    [self addChild:adSp];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNOTIFICATION_SHOW_AD object:@(YES)];
+//    SKSpriteNode *adSp = [SKSpriteNode spriteNodeWithImageNamed:@"ad_bg"];
+//    adSp.zPosition = 9000;
+//    adSp.position = CGPointMake(self.size.width / 2, adSp.size.height / 2);
+//    adSp.name = kAD_BUTTON;
+//    adSp.size = CGSizeMake(self.size.width, adSp.size.height);
+//    [self addChild:adSp];
 }
 
 - (void)clickAD {

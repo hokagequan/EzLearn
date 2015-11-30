@@ -61,6 +61,10 @@
                                              selector:@selector(handlePresentNofication:)
                                                  name:kNOTIFICATION_GAME_PRESENT_VIEW_CONTROLLER
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showAD:)
+                                                 name:kNOTIFICATION_SHOW_AD
+                                               object:nil];
     
 //    SignInScene *scene = [[SignInScene alloc] initWithSize:self.view.bounds.size];
 //    scene.scaleMode = SKSceneScaleModeAspectFill;
@@ -76,6 +80,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:kNOTIFICATION_GAME_PRESENT_VIEW_CONTROLLER
                                                   object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [super viewWillDisappear:animated];
 }
@@ -155,6 +160,10 @@
     
     UIViewController *vc = notification.object;
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)showAD:(NSNumber *)show {
+    self.bannerView.hidden = ![show boolValue];
 }
 
 @end
