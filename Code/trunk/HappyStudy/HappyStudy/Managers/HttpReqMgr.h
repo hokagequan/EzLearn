@@ -28,7 +28,7 @@
 
 + (void)requestGetGameData:(NSString *)userName gameID:(StudyGame)gameID from:(NSInteger)fromPos count:(NSInteger)count completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure;
 
-+ (void)requestIndividualGetGameData:(NSString *)userName gameID:(StudyGame)gameID level:(NSInteger)level from:(NSInteger)fromPos count:(NSInteger)count completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure;
++ (void)requestIndividualGetGameData:(NSString *)userName gameID:(StudyGame)gameID level:(NSInteger)level from:(NSInteger)fromPos count:(NSInteger)count originalLevel:(NSInteger)originalLevel isFirstGet:(BOOL)isFirstGet completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure;
 
 + (void)requestGetShareContent:(NSString *)userName gameID:(StudyGame)gameID completion:(HSHttpReqCompletion)completion failure:(HSHttpReqFailure)failure;
 
