@@ -46,6 +46,8 @@
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     skView.ignoresSiblingOrder = YES;
     
+    self.bannerView.hidden = YES;
+    
 //    // Create and configure the scene.
 //    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
 //    scene.scaleMode = SKSceneScaleModeAspectFill;
@@ -162,7 +164,8 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (void)showAD:(NSNumber *)show {
+- (void)showAD:(NSNotification *)notification {
+    NSNumber *show = notification.object;
     self.bannerView.hidden = ![show boolValue];
 }
 
