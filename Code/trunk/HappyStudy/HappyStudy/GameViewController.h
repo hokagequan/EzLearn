@@ -10,7 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import <iAd/iAd.h>
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController<ADBannerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet ADBannerView *bannerView;
 

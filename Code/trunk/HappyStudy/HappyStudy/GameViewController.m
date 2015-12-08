@@ -45,8 +45,9 @@
     skView.showsNodeCount = NO;
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     skView.ignoresSiblingOrder = YES;
+    self.bannerView.delegate = self;
     
-    self.bannerView.hidden = YES;
+//    self.bannerView.hidden = YES;
     
 //    // Create and configure the scene.
 //    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
@@ -98,6 +99,13 @@
     loadingScene.presentScene = scene;
     [(SKView *)self.view presentScene:loadingScene];
     [GameSelectScene loadAssets];
+}
+
+- (void)viewDidLayoutSubviews {
+    CGRect bannerFrame = CGRectZero;
+    bannerFrame.size = [self.bannerView sizeThatFits:self.view.bounds.size];
+    bannerFrame.origin.y = self.view.bounds.size.height - bannerFrame.size.height;
+    self.bannerView.frame = bannerFrame;
 }
 
 //- (void)viewWillLayoutSubviews
@@ -167,6 +175,24 @@
 - (void)showAD:(NSNotification *)notification {
     NSNumber *show = notification.object;
     self.bannerView.hidden = ![show boolValue];
+}
+
+#pragma mark - ADBanner
+
+- (void)bannerViewWillLoadAd:(ADBannerView *)banner {
+    NSLog(@"Will Load Ad");
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+    NSLog(@"%@", error);
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
+    NSLog(@"Load Ad");
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner {
+    NSLog(@"Action Ad");
 }
 
 @end
