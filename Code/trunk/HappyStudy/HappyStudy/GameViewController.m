@@ -46,8 +46,7 @@
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     skView.ignoresSiblingOrder = YES;
     self.bannerView.delegate = self;
-    
-//    self.bannerView.hidden = YES;
+    self.bannerView.hidden = YES;
     
 //    // Create and configure the scene.
 //    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
@@ -185,6 +184,7 @@
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
     NSLog(@"%@", error);
+    self.bannerView.hidden = YES;
 }
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {

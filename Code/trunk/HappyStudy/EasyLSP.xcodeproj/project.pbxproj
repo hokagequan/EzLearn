@@ -6608,7 +6608,7 @@
 				TargetAttributes = {
 					10EC3D5E19E92C8E005DB887 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = MP54KL6JUN;
+						DevelopmentTeam = CDZ9746AR4;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -8462,14 +8462,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HappyStudy/PrefixHeader.pch;
 				INFOPLIST_FILE = HappyStudy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HappyStudy/ThirdPartys/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.eading.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kudospark.ezlearn;
 				PRODUCT_NAME = EasyLSP;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -8490,14 +8490,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HappyStudy/PrefixHeader.pch;
 				INFOPLIST_FILE = HappyStudy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HappyStudy/ThirdPartys/WeChatSDK",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.eading.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kudospark.ezlearn;
 				PRODUCT_NAME = EasyLSP;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

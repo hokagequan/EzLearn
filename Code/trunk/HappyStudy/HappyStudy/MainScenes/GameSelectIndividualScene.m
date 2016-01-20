@@ -241,15 +241,6 @@
     [self addNode:cupNode atWorldLayer:GSWorldLayerTop];
     [self.buttons addObject:cupNode];
     
-//    self.cupNotify = [[HSLabelSprite alloc] initWithTexture:nil title:0];
-//    self.cupNotify.zPosition = 10;
-//    self.cupNotify.size = [UniversalUtil universaliPadSize:CGSizeMake(30, 30) iPhoneSize:CGSIZE_NON];
-//    self.cupNotify.position = CGPointMake(cupNode.position.x + cupNode.size.width / 2 - self.cupNotify.size.width / 2,
-//                                          cupNode.position.y + cupNode.size.height / 2 - self.cupNotify.size.height / 2);
-//    self.cupNotify.alpha = 0.0;
-//    self.cupNotify.color = [UIColor redColor];
-//    self.cupNotify.label.fontSize = [UniversalUtil universalFontSize:30];
-//    [self addNode:self.cupNotify atWorldLayer:GSWorldLayerTop];
     CGFloat radius = [UniversalUtil universalDelta:20];
     self.cupNotify = [SKShapeNode shapeNodeWithCircleOfRadius:radius];
     self.cupNotify.fillColor = [UIColor redColor];
