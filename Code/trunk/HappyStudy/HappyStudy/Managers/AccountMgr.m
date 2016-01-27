@@ -11,8 +11,6 @@
 #import "Award.h"
 #import "Task.h"
 
-#import <AdSupport/AdSupport.h>
-
 @implementation AccountMgr
 
 + (instancetype)sharedInstance {
@@ -28,7 +26,7 @@
 - (id)init {
     if (self = [super init]) {
         self.user = [[User alloc] init];
-        self.identifier = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+        self.identifier = [[UIDevice currentDevice].identifierForVendor UUIDString];
     }
     
     return self;
